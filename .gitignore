@@ -1,0 +1,10 @@
+tmp
+log/*.log
+config/database.yml
+vendor/rails
+db/*.sqlite
+db/*.sqlite2
+db/*.sqlite3
+db/*.db
+.DS_Store
+public/*assets
