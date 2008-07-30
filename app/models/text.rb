@@ -1,0 +1,2 @@
+class Text < Item
+end
