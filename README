@@ -1,3 +1,7 @@
 
 Open Tables is a project by the Working Architecture Group
 
+== Installations
+
+rake goldberg:install
+rake db:migrate
