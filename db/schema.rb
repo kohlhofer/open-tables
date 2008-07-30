@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080730130243) do
+ActiveRecord::Schema.define(:version => 20080730131716) do
 
   create_table "goldberg_content_pages", :force => true do |t|
     t.string   "title"
@@ -145,6 +145,20 @@ ActiveRecord::Schema.define(:version => 20080730130243) do
   end
 
   add_index "plugin_schema_migrations", ["plugin_name", "version"], :name => "unique_schema_migrations", :unique => true
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["taggable_id", "taggable_type"], :name => "index_taggings_on_taggable_id_and_taggable_type"
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
+  end
 
   create_table "topics", :force => true do |t|
     t.string   "title",                        :null => false
