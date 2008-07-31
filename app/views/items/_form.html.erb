@@ -3,12 +3,16 @@
   <%= f.select :type_name, ITEM_TYPES.collect{|name| [name, name]}, {:include_blank => true},{ :onchange => 'hide_all(this); show(this.value);'} %>
 </p>
 
-<p class="text video photo weblink"><%= f.label :title, 'Title' %>
+<p class="article video photo weblink"><%= f.label :title, 'Title' %>
   <%= f.text_field :title %>
 </p>
 
-<p class="text video photo weblink"><%= f.label :source, 'Source' %>
+<p class="article video photo weblink"><%= f.label :source, 'Source' %>
   <%= f.text_field :source %>
+</p>
+
+<p><%= f.label :tag_list, 'Tags (e.g. "garden,green,bauhaus")' %>
+  <%= f.text_field :tag_list %>
 </p>
 
 <p class="text"><%= f.label :body, 'body' %>

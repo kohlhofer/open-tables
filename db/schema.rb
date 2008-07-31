@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080731145201) do
+ActiveRecord::Schema.define(:version => 20080731220602) do
 
   create_table "goldberg_content_pages", :force => true do |t|
     t.string   "title"
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(:version => 20080731145201) do
     t.string   "confirmation_key"
     t.datetime "password_changed_at"
     t.boolean  "password_expired"
+    t.string   "website"
   end
 
   add_index "goldberg_users", ["role_id"], :name => "fk_user_role_id"

@@ -67,4 +67,4 @@ Rails::Initializer.run do |config|
 end
 
 
-ITEM_TYPES = ['Text', 'Photo']
+ITEM_TYPES = ['Article', 'Photo']

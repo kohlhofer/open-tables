@@ -31,6 +31,10 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(params[:item])
+    unless logged_in?
+      @user = create_guest(params[:user])
+      render :action => :new and return if @user.new_record?
+    end
     respond_to do |format|
       if @item.save
         flash[:notice] = 'Item was successfully created.'
