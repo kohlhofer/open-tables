@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => '0f7da33290dcd29d5dcf628de0f8cbec'
+  require 'goldberg_user_extensions'
+  helper_method :current_user, :logged_in?
   
   # See ActionController::Base for details 
   # Uncomment this to filter the contents of submitted sensitive data parameters

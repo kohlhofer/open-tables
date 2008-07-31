@@ -1,0 +1,7 @@
+<% @page_title = h(@topic.title) %>
+
+<% @topic.items.each do %>
+  <div class="item">
+    <%= render :partial => item.type, :locals => {:item => item} %>
+  </div>
+<% end %>

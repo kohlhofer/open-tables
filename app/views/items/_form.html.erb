@@ -1,0 +1,16 @@
+
+<p><%= f.label :type, 'Type' %>
+  <%= f.select :type_name, ITEM_TYPES.collect{|name| [name, name]}, {:include_blank => true},{ :onchange => 'hide_all(this); show(this.value);'} %>
+</p>
+
+<p class="text video photo weblink"><%= f.label :title, 'Title' %>
+  <%= f.text_field :title %>
+</p>
+
+<p class="text video photo weblink"><%= f.label :source, 'Source' %>
+  <%= f.text_field :source %>
+</p>
+
+<p class="text"><%= f.label :body, 'body' %>
+  <%= f.text_area :body %>
+</p>

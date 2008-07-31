@@ -1,0 +1,13 @@
+<% @page_title = 'Edit topic' %>
+
+<%= error_messages_for :topic %>
+
+<% form_for(@topic, :html => { :multipart => true }) do |f| %>
+  <%= render :partial => 'form' , :locals => {:f => f} %>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @topic %> |
+<%= link_to 'Back', topics_path %>

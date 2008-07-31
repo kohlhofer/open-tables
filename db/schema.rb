@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080730131716) do
+ActiveRecord::Schema.define(:version => 20080731145201) do
 
   create_table "goldberg_content_pages", :force => true do |t|
     t.string   "title"
@@ -126,12 +126,15 @@ ActiveRecord::Schema.define(:version => 20080730131716) do
   add_index "goldberg_users", ["role_id"], :name => "fk_user_role_id"
 
   create_table "items", :force => true do |t|
-    t.string   "type",       :null => false
+    t.string   "type",                          :null => false
     t.string   "title"
     t.string   "source"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "published",  :default => true,  :null => false
+    t.boolean  "spam",       :default => false, :null => false
+    t.integer  "user_id"
   end
 
   create_table "items_topics", :force => true do |t|

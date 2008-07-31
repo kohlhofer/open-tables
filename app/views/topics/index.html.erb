@@ -1,0 +1,5 @@
+<% @page_title = 'Topics' %>
+
+<% @topics.each do |topic| %>
+  <%= link_to topic.title, topic %>
+<% end %>

@@ -1,0 +1,22 @@
+<% @page_title = 'Add a new topic' %>
+
+<%= error_messages_for :topic %>
+
+<% form_for(:topic, @topic, :url => topics_url, :html => { :multipart => true }) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+  
+  <% unless logged_in? %>
+  <fieldset>
+  <legend>Your data</data>
+  <p>You are not logged in but if you already have an account, you may <%= link_to 'login', login_url %> first. If you don't have an account yet, you can type in your email address and <em>we will create an account for you</em>. If this is not your account <%= link_to 'logout first', logout_url %></p>
+  <% fields_for :user do |fu| %>
+    <%= render :partial => '/users/form', :locals => {:f => fu } %>
+  <% end %>
+  </fieldset>
+  <% end %>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
