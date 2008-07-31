@@ -2,6 +2,6 @@
 
 <% @topic.items.each do %>
   <div class="item">
-    <%= render :partial => item.type, :locals => {:item => item} %>
+    <%= render :partial => item.type.to_s.downcase, :locals => {:item => item} %>
   </div>
 <% end %>

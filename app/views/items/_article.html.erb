@@ -1,0 +1,4 @@
+<%= h(item.title) %>
+<%= link_to h(item.title), item.source, :class => "source" unless item.source.blank? %>
+
+<%= textilize(h(item.body)) %>
