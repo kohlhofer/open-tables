@@ -2,4 +2,10 @@
 <% @item.topics.each do |topic| %>
   <%= link_to topic.title, topic %>
 <% end %>
-<p>tags: <%= item.tags.join(', ') %></p>
+<p>tags: <%= @item.tags.join(', ') %></p>
+
+<% if @topic %>
+  <% @topic.items.tag_counts.each do |tag| %>
+    <%= tag %>
+  <% end %>
+<% end %>

@@ -1,4 +1,4 @@
-<% form_tag '/items/', :method => :get do -%>
+<% form_tag @topic.nil? ? items_url : topic_items_url(@topic), :method => :get do -%>
   <%= text_field_tag :tags, [params[:tags]].join(', ') %>
   <%= submit_tag 'search', :name => nil %>
 <% end -%>
