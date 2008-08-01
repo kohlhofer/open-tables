@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
 
   def index
     if params[:tags] || params[:tag]
+      params[:tags] = params[:tags].split(',') unless params[:tags].is_a?(Array)
       if @topic
         @items = @topic.items.published.find_tagged_with(params[:tags] || params[:tag], :match_all => true).paginate(:per_page => 20, :page => params[:page])
       else
@@ -25,6 +26,9 @@ class ItemsController < ApplicationController
   end
 
   def show
+    if !@topic and @item.topics and @item.topics.size == 1
+      redirect_to topic_item_url(@item.topics[0], @item) and return
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @item }
