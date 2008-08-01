@@ -1,7 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :topics
 
-  map.resources :items
+  map.resources :items, :collection => {:tag_cloud => :get }
+  map.connect '/tag/:tag', :controller => "items", :action => "index"
+  map.connect '/tag/*tags', :controller => "items", :action => "index"
+  map.tags '/tags', :controller => "items", :action => "tag_cloud"
 
   # The priority is based upon order of creation: first created -> highest priority.
 

@@ -1,8 +1,15 @@
 class ItemsController < ApplicationController
   before_filter :current_item, :only => [:show, :edit, :update, :add_tag, :destroy]
+  
+  include TagsHelper
+  helper :tags
 
   def index
-    @items = Item.published.paginate(:per_page => 20, :page => params[:page])
+    if params[:tags] || params[:tag]
+      @items = Item.published.find_tagged_with(params[:tags] || params[:tag], :match_all => true).paginate(:per_page => 20, :page => params[:page])
+    else
+      @items = Item.published.paginate(:per_page => 20, :page => params[:page])
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -70,6 +77,10 @@ class ItemsController < ApplicationController
       format.html { redirect_to(admin_items_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  def tag_cloud
+    @tags = Item.tag_counts
   end
   
   private

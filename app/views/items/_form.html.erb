@@ -11,10 +11,18 @@
   <%= f.text_field :source %>
 </p>
 
+<p class="photo"><%= f.label :body, 'weblink' %>
+  <%= f.text_field :body %>
+</p>
+
 <p><%= f.label :tag_list, 'Tags (e.g. "garden,green,bauhaus")' %>
   <%= f.text_field :tag_list %>
 </p>
 
-<p class="text"><%= f.label :body, 'body' %>
+<p class="article video photo weblink"><%= f.label :topic_ids %>
+  <%= f.select :topic_ids, Topic.active.collect{|topic| [topic.title, topic.id]}, {:size => 3}, {:multiple => true} %>
+</p>
+
+<p class="article"><%= f.label :body, 'body' %>
   <%= f.text_area :body %>
 </p>
