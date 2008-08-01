@@ -1,0 +1,4 @@
+<% form_tag '/items/', :method => :get do -%>
+  <%= text_field_tag :tags, [params[:tags]].join(', ') %>
+  <%= submit_tag 'search', :name => nil %>
+<% end -%>

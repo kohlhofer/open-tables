@@ -26,10 +26,14 @@
   <div id="top_navigation">
     <ul>
       <li><%= link_to_unless_current 'topics', topics_url %></li>
-      <li><%= link_to_unless_current 'new item', new_item_url %></li>
+      <% if @topic %>
+      <li><%= link_to_unless_current 'new item', new_topic_item_url(@topic) %></li>
+      <% end %>
       <li><%= link_to_unless_current 'tags', tags_url %></li>
     </ul>
   </div>
+  
+  <%= render :partial => '/items/search' %>
 
 <div id="container">
 <div id="col-main">

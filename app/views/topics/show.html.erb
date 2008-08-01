@@ -2,6 +2,11 @@
 
 <p>topic tags: <%= @topic.tags.join(', ') %></p>
 
+<ul><% tag_cloud @topic.items.tag_counts, %w(css1 css2 css3 css4) do |tag, css_class| %>
+   <li><%= link_to tag.name, { :controller => :items, :action => :tag, :id => tag.name, :topic_id => @topic.id }, :class => css_class %></li>
+ <% end %>
+</ul>
+ 
 <% @topic.items.published.find(:all, :include => :tags).each do |item| %>
   <div class="item">
     <%= render :partial => '/items/' + item.type.to_s.downcase, :locals => {:item => item} %>

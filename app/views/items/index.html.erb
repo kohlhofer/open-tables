@@ -1,4 +1,10 @@
-<% @page_title = 'items' %>
+<%
+if params[:tags]
+  @page_title = 'items for %s' % [params[:tags]].join(', ')
+else
+  @page_title = 'items' 
+end
+%>
 
 <% @items.each do |item| %>
   <div class="item">

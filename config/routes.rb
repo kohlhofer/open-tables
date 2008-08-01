@@ -1,7 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :topics
-
-  map.resources :items, :collection => {:tag_cloud => :get }
+  map.resources :topics do |topic|
+    topic.resources :items, :collection => {:tag_cloud => :get, :tags => :get }
+  end
+  map.resources :items, :collection => {:tag_cloud => :get, :tags => :get }
   map.connect '/tag/:tag', :controller => "items", :action => "index"
   map.connect '/tag/*tags', :controller => "items", :action => "index"
   map.tags '/tags', :controller => "items", :action => "tag_cloud"
@@ -38,7 +39,7 @@ ActionController::Routing::Routes.draw do |map|
   #   end
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  map.root :controller => "items"
+  map.root :controller => "topics"
 
   map.login 'login', :controller => 'goldberg/auth', :action => 'login'
   map.logout 'logout', :controller => 'goldberg/auth', :action => 'login'

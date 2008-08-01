@@ -1,14 +1,21 @@
 class ItemsController < ApplicationController
   before_filter :current_item, :only => [:show, :edit, :update, :add_tag, :destroy]
+  before_filter :current_topic
   
   include TagsHelper
   helper :tags
 
   def index
     if params[:tags] || params[:tag]
-      @items = Item.published.find_tagged_with(params[:tags] || params[:tag], :match_all => true).paginate(:per_page => 20, :page => params[:page])
-    else
+      if @topic
+        @items = @topic.items.published.find_tagged_with(params[:tags] || params[:tag], :match_all => true).paginate(:per_page => 20, :page => params[:page])
+      else
+        @items = Item.published.find_tagged_with(params[:tags] || params[:tag], :match_all => true).paginate(:per_page => 20, :page => params[:page])
+      end
+    elsif params[:topic_id].blank?
       @items = Item.published.paginate(:per_page => 20, :page => params[:page])
+    else
+      @items = @topic.items.published.paginate(:per_page => 20, :page => params[:page])
     end
 
     respond_to do |format|
@@ -25,7 +32,8 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
+    @item = @topic.items.new
+    @item.topics << @topic
 
     respond_to do |format|
       format.html # new.html.erb
@@ -86,5 +94,10 @@ class ItemsController < ApplicationController
   private
   def current_item
     @item = Item.find(params[:id])
+  end
+
+  def current_topic
+    return unless params[:topic_id]
+    @topic = Topic.find(params[:topic_id])
   end
 end

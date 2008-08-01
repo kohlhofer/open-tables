@@ -1,6 +1,9 @@
 class TopicsController < ApplicationController
   before_filter :current_topic, :only => [:show, :edit, :update, :add_tag, :destroy]
 
+  include TagsHelper
+  helper :tags
+
   def index
     @topics = Topic.active.paginate(:per_page => 20, :page => params[:page])
 
