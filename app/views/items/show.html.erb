@@ -1,0 +1,5 @@
+<%= render :partial => @item.type.to_s.downcase, :locals => {:item => @item } %>
+<% @item.topics.each do |topic| %>
+  <%= link_to topic.title, topic %>
+<% end %>
+<p>tags: <%= item.tags.join(', ') %></p>

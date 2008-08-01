@@ -2,12 +2,9 @@
 
 <%= error_messages_for :item %>
 
-<% form_for(@item, :html => { :multipart => true }) do |f| %>
+<% form_for(@item, :url => {:controller => 'items', :action => 'update', :id => @item.id}, :html => { :method => :put}) do |f| %>
   <%= render :partial => 'form' , :locals => {:f => f} %>
   <p>
     <%= f.submit "Update" %>
   </p>
 <% end %>
-
-<%= link_to 'Show', @item %> |
-<%= link_to 'Back', items_path %>

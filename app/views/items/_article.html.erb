@@ -1,4 +1,4 @@
 <%= h(item.title) %>
 <%= link_to h(item.title), item.source, :class => "source" unless item.source.blank? %>
-
+<p>tags: <%= item.tags.join(', ') %></p>
 <%= textilize(h(item.body)) %>
