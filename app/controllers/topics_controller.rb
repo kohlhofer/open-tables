@@ -14,6 +14,10 @@ class TopicsController < ApplicationController
   end
 
   def show
+    unless @topic.active?
+      flash[:error] = "Topic not active" 
+      redirect_to :action => :index and return
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @topic }
