@@ -1,9 +1,13 @@
 <h1><%= @page_title = "Select Topic" %>:</h1>
 
 
-<dl id="topicList">
+<ul id="topicList">
 <% @topics.each do |topic| %>
-  <dt><%= link_to topic.title, topic %></dt>
-  <dd><%= link_to textilize(topic.description), topic %></dd>
+	<li>
+		<a href="<%= topic %>">
+	  	<h2><%= topic.title %></h2>
+	  	<div><%= textilize(topic.description) %></div>
+		</a>
+	</li>
 <% end %>
-</dl>
+</ul>

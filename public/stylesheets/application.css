@@ -43,8 +43,8 @@ h1 a.changeTopic {
   margin: 0px;
   padding:0.4em 0.5em;
   background-color: #FFF;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
 	border-width: 0px;
 }
 
@@ -70,10 +70,10 @@ a:visited { color: #03A5D6; }
   height: 80px;
   background-color: #FFF;
   margin: 0px auto;
- -moz-border-radius-bottomleft: 3px;
--webkit-border-bottom-left-radius: 3px;
--moz-border-radius-bottomright: 3px;
--webkit-border-bottom-right-radius: 3px;
+ -moz-border-radius-bottomleft: 5px;
+-webkit-border-bottom-left-radius: 5px;
+-moz-border-radius-bottomright: 5px;
+-webkit-border-bottom-right-radius: 5px;
 }
 
 a#logo {
@@ -136,12 +136,30 @@ ul#topicList {
 }
 
 ul#topicList li {
-  background-color: #FFF;
   padding: 0px;
 }
 
 ul#topicList a {
 	display: block;
+	padding: 1.5em;
+	text-decoration: none;
+}
+
+ul#topicList a:hover {
+	background-color: #FFF;
+}
+
+ul#topicList h2 {
+	font-size: 1.3em;
+	margin: 0px;
+	text-decoration: underline;
+}
+
+ul#topicList p {
+	font-size: 1.1em;
+	margin: 0.5em 0px 0.5em 0px;
+	color: #666;
+
 }
 
 form select {
@@ -168,8 +186,8 @@ form input[type="submit"] {
   padding: 1em;
   margin-top: 3em;
   margin-bottom: 1em;
-  	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
+  	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
 }
 
 #footer ul {
