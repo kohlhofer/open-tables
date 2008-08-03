@@ -20,41 +20,41 @@
 <body id="c-<%= h(params[:controller]) %>">
 
 
-  <p class="logo"><a href="/" title="back to home-page">opentables</a></p>
+  <div id="head" class="mainSize">
+		<ul id="mainNav">
+			<a href="#">Login</a>
+			<a href="#">SignUp</a>
+			<a href="#">Admin</a>
+		</ul>
+		<a href="/" title="back to home-page" id="logo">opentables</a>
+	</div>
 
 
   
 
 
-<div id="container">
-<div id="col-main">
-<div id="col-left">
-
-
-<a name="top"></a>
-<div id="wrap-main">
-<div id="main">
-<% flash.each do |type, message| %>
+<div id="wrap" class="mainSize">
+	<% flash.each do |type, message| %>
   <div class="<%= type %>">
     <%= message %>
   </div>
-<% end %>
+	<% end %>
 
-<%= yield %>
-</div>
-</div> <!-- end wrap-main // main -->
+	<%= yield %>
 
 
-<div id="left">
-  <%= goldberg_left_menu %>
-  &nbsp;
-</div> <!-- end left -->
-<div id="footer">
-<ul>
-  <li><a href="#top">^ top</a></li>
-  <li><a href="/">home</a></li>
-</ul>  
-<%= Goldberg.settings.footer_message %>
+
+	<div id="left">
+	  <%= goldberg_left_menu %>
+	  &nbsp;
+	</div> <!-- end left -->
+	<div id="footer">
+	<ul>
+	  <li><a href="#logo">^ top</a></li>
+	  <li><a href="/">home</a></li>
+	</ul>  
+	<%= Goldberg.settings.footer_message %>
+	</div>
 </div>
 </body>
 </html>

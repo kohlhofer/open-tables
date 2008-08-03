@@ -8,23 +8,76 @@ body {
 	padding: 0px;
 }
 
+#wrap {
+
+}
+
+.mainSize {
+  width: 80%;
+  margin: 0px auto;
+  min-width: 740px;
+  max-width: 70em; 
+}
+
 a { color: #03A5D6; }
 a:visited { color: #03A5D6; }
 
 
-p.logo {
+#head {
   height: 80px;
   background-color: #FFF;
-  margin: 0px;
-  padding: 0px;
+  margin: 0px auto;
 }
 
-p.logo a {
+a#logo {
   display: block;
   height: 80px;
   margin: 0px;
   padding: 0px;
-  width:200px;
-text-indent: -6000px;
-background: #F00 url(/images/logo.gif) no-repeat left top;
+  width:220px;
+  text-indent: -6000px;
+  background: transparent url(/images/logo.gif) no-repeat 20px top;
   }
+ 
+#mainNav {
+  list-style: none;
+  float: right;
+  margin:1em 1em 0px 0px;
+  padding: 0px;
+}
+
+#mainNav li {
+	float: left;
+}
+
+#mainNav a {
+	padding: 1em 0.5em;
+}
+  
+  
+  
+form p {
+	margin: 1em 0px;
+}
+
+form label {
+	display: block;
+	margin: 0.5em 0px;
+	color: #666;
+}
+
+form textarea {
+	font-size: 1.2em;
+	height:5em;
+	width: 80%;
+}
+
+form select {
+	font-size: 1.1em;
+	height:5em;
+	width: 15em;
+}
+
+form input[type="submit"] {
+	font-size: 1.4em;
+	}
