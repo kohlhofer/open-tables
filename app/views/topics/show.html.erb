@@ -4,10 +4,10 @@
   <%= link_to 'New item', new_topic_item_url(@topic) %>
 </div>
 
-<h1><%= @page_title = h(@topic.title) %> <%= link_to_unless_current '(Change topic)', topics_url, :class => "changeTopic" %></h1>
+<h1>Topic: <%= @page_title = h(@topic.title) %> <%= link_to_unless_current '(Change topic)', topics_url, :class => "changeTopic" %></h1>
 
 
-<p class="topicTags">Tags include: <%= @topic.tags.join(', ') %></p>
+<p class="topicTags">Topic tags are: <%= @topic.tags.join(', ') %></p>
 
 <ul><% tag_cloud @topic.items.tag_counts, %w(css1 css2 css3 css4) do |tag, css_class| %>
    <li><%= link_to tag.name, { :controller => :items, :action => :index, :tags => tag.name, :topic_id => @topic.id }, :class => css_class %></li>
