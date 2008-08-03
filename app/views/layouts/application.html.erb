@@ -19,21 +19,12 @@
 
 <body id="c-<%= h(params[:controller]) %>">
 
-<div id="header">
 
-  <h1><a href="/" title="back to home-page">opentables</a></h1>
+  <p class="logo"><a href="/" title="back to home-page">opentables</a></p>
 
-  <div id="top_navigation">
-    <ul>
-      <li><%= link_to_unless_current 'topics', topics_url %></li>
-      <% if @topic %>
-      <li><%= link_to_unless_current 'new item', new_topic_item_url(@topic) %></li>
-      <% end %>
-      <li><%= link_to_unless_current 'tags', tags_url %></li>
-    </ul>
-  </div>
+
   
-  <%= render :partial => '/items/search' %>
+
 
 <div id="container">
 <div id="col-main">
@@ -43,9 +34,6 @@
 <a name="top"></a>
 <div id="wrap-main">
 <div id="main">
-<% if @page_title %>
-  <h2><%= @page_title %></h2>
-<% end %>
 <% flash.each do |type, message| %>
   <div class="<%= type %>">
     <%= message %>

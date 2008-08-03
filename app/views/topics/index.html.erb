@@ -1,5 +1,9 @@
-<% @page_title = 'Topics' %>
 
+
+<h1><%= @page_title = "Select Topic:" %></h1>
+
+<ul id="topicList">
 <% @topics.each do |topic| %>
-  <%= link_to topic.title, topic %>
+  <li><%= link_to topic.title, topic %></li>
 <% end %>
+</ul>

@@ -1,4 +1,15 @@
-<% @page_title = h(@topic.title) %>
+
+
+
+
+<h1><%= @page_title = h(@topic.title) %> <%= link_to_unless_current '(Change topic)', topics_url, :class => "changeTopic" %></h1>
+
+<div id="navigation">
+  <ul>
+    <li><%= link_to_unless_current 'new item', new_topic_item_url(@topic) %></li>
+  </ul>
+  <%= render :partial => '/items/search' %>
+</div>
 
 <p>topic tags: <%= @topic.tags.join(', ') %></p>
 
