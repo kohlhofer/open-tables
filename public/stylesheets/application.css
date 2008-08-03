@@ -12,11 +12,55 @@ body {
 
 }
 
+h1 {
+  font-size: 1.5em;
+  font-weight: normal;
+}
+
+h1 a.changeTopic {
+  font-size: 0.7em;
+  margin-left: 0.5em;
+}
+
+
 .mainSize {
   width: 80%;
   margin: 0px auto;
   min-width: 740px;
   max-width: 70em; 
+}
+
+
+#topicNav {
+ float: right; 
+}
+
+#topicNav form {
+  float: right;
+  font-size: 1.2em;
+}
+
+#quickSearch {
+  float: right;
+}
+
+#quickSearch form {
+  margin: 0px;
+  padding:0.4em 0.5em;
+  background-color: #FFF;
+}
+
+
+#quickSearch input#tags {
+ font-size: 1em;
+ width:8em;
+}
+
+#topicNav a {
+  padding: 0.5em 1em;
+  float:right;
+  margin-right: 0.5em;
+  font-size: 1.2em;
 }
 
 a { color: #03A5D6; }
