@@ -22,9 +22,13 @@
 
   <div id="head" class="mainSize">
     <ul id="mainNav">
-      <%= link_to 'Login', login_url %>
-      <%= link_to 'SignUp', signup_url %>
-      <%= link_to 'Admin', admin_url %>
+			<a href="#">About</a>
+			<% unless logged_in? %>
+      	<%= link_to 'Login', login_url %>
+      	<%= link_to 'SignUp', signup_url %>
+			<% else %>
+      	<%= link_to 'Admin', admin_url %>
+			<% end %>
     </ul>
     <a href="/" title="back to home-page" id="logo">opentables</a>
   </div>
