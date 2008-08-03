@@ -4,7 +4,7 @@
 <ul id="topicList">
 <% @topics.each do |topic| %>
 	<li>
-		<a href="<%= topic %>">
+		<a href="<%= url_for(topic) %>">
 	  	<h2><%= topic.title %></h2>
 	  	<div><%= textilize(topic.description) %></div>
 		</a>

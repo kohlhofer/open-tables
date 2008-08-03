@@ -37,6 +37,7 @@ h1 a.changeTopic {
 
 #quickSearch {
   float: right;
+  margin-left: 1em;
 }
 
 #quickSearch form {
@@ -57,7 +58,6 @@ h1 a.changeTopic {
 #topicNav a {
   padding: 0.5em 1em;
   float:right;
-  margin-right: 0.5em;
   font-size: 1em;
   font-weight: bold;
 }
