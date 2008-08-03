@@ -19,10 +19,6 @@
   <%= f.text_field :tag_list %>
 </p>
 
-<p class="article video photo weblink"><%= f.label :topic_ids %>
-  <%= f.select :topic_ids, Topic.active.collect{|topic| [topic.title, topic.id]}, {:size => 3}, {:multiple => true} %>
-</p>
-
 <p class="article"><%= f.label :body, 'body' %>
   <%= f.text_area :body %>
 </p>

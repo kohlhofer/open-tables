@@ -50,6 +50,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(params[:item])
+    @item.topics << @topic if @topic
     unless logged_in?
       @user = create_guest(params[:user])
       render :action => :new and return if @user.new_record?
@@ -68,6 +69,7 @@ class ItemsController < ApplicationController
   end
 
   def update
+    @item.topics << @topic if @topic
     respond_to do |format|
       if @item.update_attributes(params[:item])
         flash[:notice] = 'Item was successfully updated.'
