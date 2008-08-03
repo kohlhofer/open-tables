@@ -1,4 +1,4 @@
-<h1><%= @page_title = h(@topic.title) %></h1>
+<h1><%= @page_title = link_to h(@topic.title), @topic %></h1>
 
 <%= error_messages_for :item %>
 
