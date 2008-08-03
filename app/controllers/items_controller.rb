@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
   helper :tags
 
   def index
-    if params[:tags] || params[:tag]
+    if params[:tags]
       params[:tags] = params[:tags].split(',') unless params[:tags].is_a?(Array)
       if @topic
         @items = @topic.items.published.find_tagged_with(params[:tags] || params[:tag], :match_all => true).paginate(:per_page => 20, :page => params[:page])

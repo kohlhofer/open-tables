@@ -3,7 +3,12 @@
 <% @item.topics.each do |topic| %>
   <%= link_to topic.title, topic %>
 <% end %>
-<p>tags: <%= @item.tags.join(', ') %></p>
+<h3>tags</h3>
+  <ul>
+  <% @item.tags.each do |tag| %>
+    <li><%= link_to tag, { :controller => :items, :action => :index, :tags => tag.name, :topic_id => @topic.id } %></li>
+  <% end %>
+  </ul>
 <% form_tag({:action => :add_tag, :id => @item.id }, :method => :put) do -%>
   <%= text_field_tag :tag %>
   <%= submit_tag 'add tag', :name => nil %>
