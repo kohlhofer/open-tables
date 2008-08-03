@@ -9,6 +9,9 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'topics/:topic_id/tag/*tags', :controller => "items", :action => "index"
   map.tags '/tags', :controller => "items", :action => "tag_cloud"
 
+  
+  map.admin '/admin', :controller => 'admin'
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
@@ -43,11 +46,11 @@ ActionController::Routing::Routes.draw do |map|
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   map.root :controller => "topics"
 
-  map.login 'login', :controller => 'goldberg/auth', :action => 'login'
-  map.logout 'logout', :controller => 'goldberg/auth', :action => 'login'
-  map.signup 'signup', :controller => 'goldberg/users', :action => 'self_register'
-  map.profile 'profile', :controller => 'goldberg/users', :action => 'self_show'
-  map.about 'about', :controller => 'goldberg/content_pages', :action => 'view', :page_name => ['about']
+  map.login '/login', :controller => 'goldberg/auth', :action => 'login'
+  map.logout '/logout', :controller => 'goldberg/auth', :action => 'login'
+  map.signup '/signup', :controller => 'goldberg/users', :action => 'self_register'
+  map.profile '/profile', :controller => 'goldberg/users', :action => 'self_show'
+  map.about '/about', :controller => 'goldberg/content_pages', :action => 'view', :page_name => ['about']
   
   # See how all your routes lay out with "rake routes"
 

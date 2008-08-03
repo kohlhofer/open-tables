@@ -21,40 +21,40 @@
 
 
   <div id="head" class="mainSize">
-		<ul id="mainNav">
-			<a href="#">Login</a>
-			<a href="#">SignUp</a>
-			<a href="#">Admin</a>
-		</ul>
-		<a href="/" title="back to home-page" id="logo">opentables</a>
-	</div>
+    <ul id="mainNav">
+      <%= link_to 'Login', login_url %>
+      <%= link_to 'SignUp', signup_url %>
+      <%= link_to 'Admin', admin_url %>
+    </ul>
+    <a href="/" title="back to home-page" id="logo">opentables</a>
+  </div>
 
 
   
 
 
 <div id="wrap" class="mainSize">
-	<% flash.each do |type, message| %>
+  <% flash.each do |type, message| %>
   <div class="<%= type %>">
     <%= message %>
   </div>
-	<% end %>
+  <% end %>
 
-	<%= yield %>
+  <%= yield %>
 
 
 
-	<div id="left">
-	  <%= goldberg_left_menu %>
-	  &nbsp;
-	</div> <!-- end left -->
-	<div id="footer">
-	<ul>
-	  <li><a href="#logo">^ top</a></li>
-	  <li><a href="/">home</a></li>
-	</ul>  
-	<%= Goldberg.settings.footer_message %>
-	</div>
+  <div id="left">
+    <%= goldberg_left_menu %>
+    &nbsp;
+  </div> <!-- end left -->
+  <div id="footer">
+  <ul>
+    <li><a href="#logo">^ top</a></li>
+    <li><a href="/">home</a></li>
+  </ul>  
+  <%= Goldberg.settings.footer_message %>
+  </div>
 </div>
 </body>
 </html>
