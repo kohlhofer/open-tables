@@ -4,9 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.resources :items, :collection => {:tag_cloud => :get, :tags => :get, :add_tag => :put }
   map.connect '/tag/:tag', :controller => "items", :action => "index"
-  map.connect '/tag/*tags', :controller => "items", :action => "index"
-  map.connect 'topics/:topic_id/tag/:tag', :controller => "items", :action => "index"
-  map.connect 'topics/:topic_id/tag/*tags', :controller => "items", :action => "index"
+  map.connect '/topics/:topic_id/tag/*tags', :controller => "items", :action => "index"
   map.tags '/tags', :controller => "items", :action => "tag_cloud"
 
   

@@ -9,7 +9,7 @@
 <p class="topicTags">Tags include: <%= @topic.tags.join(', ') %></p>
 
 <ul><% tag_cloud @topic.items.tag_counts, %w(css1 css2 css3 css4) do |tag, css_class| %>
-   <li><%= link_to tag.name, { :controller => :items, :action => :tag, :id => tag.name, :topic_id => @topic.id }, :class => css_class %></li>
+   <li><%= link_to tag.name, { :controller => :items, :action => :index, :tags => tag.name, :topic_id => @topic.id }, :class => css_class %></li>
  <% end %>
 </ul>
  
