@@ -9,110 +9,110 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080731220602) do
+ActiveRecord::Schema.define(:version => 20080803130240) do
 
   create_table "goldberg_content_pages", :force => true do |t|
     t.string   "title"
-    t.string   "name"
-    t.integer  "markup_style_id", :limit => 11
+    t.string   "name",            :null => false
+    t.integer  "markup_style_id"
     t.text     "content"
-    t.integer  "permission_id",   :limit => 11
+    t.integer  "permission_id",   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "content_cache"
     t.string   "markup_style"
   end
 
-  add_index "goldberg_content_pages", ["permission_id"], :name => "fk_content_page_permission_id"
   add_index "goldberg_content_pages", ["markup_style_id"], :name => "fk_content_page_markup_style_id"
+  add_index "goldberg_content_pages", ["permission_id"], :name => "fk_content_page_permission_id"
 
   create_table "goldberg_controller_actions", :force => true do |t|
-    t.integer "site_controller_id", :limit => 11
-    t.string  "name"
-    t.integer "permission_id",      :limit => 11
+    t.integer "site_controller_id", :null => false
+    t.string  "name",               :null => false
+    t.integer "permission_id"
     t.string  "url_to_use"
   end
 
-  add_index "goldberg_controller_actions", ["permission_id"], :name => "fk_controller_action_permission_id"
   add_index "goldberg_controller_actions", ["site_controller_id"], :name => "fk_controller_action_site_controller_id"
+  add_index "goldberg_controller_actions", ["permission_id"], :name => "fk_controller_action_permission_id"
 
   create_table "goldberg_menu_items", :force => true do |t|
-    t.integer "parent_id",            :limit => 11
-    t.string  "name"
-    t.string  "label"
-    t.integer "seq",                  :limit => 11
-    t.integer "controller_action_id", :limit => 11
-    t.integer "content_page_id",      :limit => 11
+    t.integer "parent_id"
+    t.string  "name",                 :null => false
+    t.string  "label",                :null => false
+    t.integer "seq"
+    t.integer "controller_action_id"
+    t.integer "content_page_id"
   end
 
-  add_index "goldberg_menu_items", ["controller_action_id"], :name => "fk_menu_item_controller_action_id"
-  add_index "goldberg_menu_items", ["content_page_id"], :name => "fk_menu_item_content_page_id"
   add_index "goldberg_menu_items", ["parent_id"], :name => "fk_menu_item_parent_id"
+  add_index "goldberg_menu_items", ["content_page_id"], :name => "fk_menu_item_content_page_id"
+  add_index "goldberg_menu_items", ["controller_action_id"], :name => "fk_menu_item_controller_action_id"
 
   create_table "goldberg_permissions", :force => true do |t|
-    t.string "name", :default => ""
+    t.string "name", :default => "", :null => false
   end
 
   create_table "goldberg_roles", :force => true do |t|
-    t.string   "name"
-    t.integer  "parent_id",       :limit => 11
-    t.string   "description",                   :default => "", :null => false
-    t.integer  "default_page_id", :limit => 11
+    t.string   "name",                            :null => false
+    t.integer  "parent_id"
+    t.string   "description",     :default => "", :null => false
+    t.integer  "default_page_id"
     t.text     "cache"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "start_path"
   end
 
-  add_index "goldberg_roles", ["parent_id"], :name => "fk_role_parent_id"
   add_index "goldberg_roles", ["default_page_id"], :name => "fk_role_default_page_id"
+  add_index "goldberg_roles", ["parent_id"], :name => "fk_role_parent_id"
 
   create_table "goldberg_roles_permissions", :force => true do |t|
-    t.integer "role_id",       :limit => 11
-    t.integer "permission_id", :limit => 11
+    t.integer "role_id",       :null => false
+    t.integer "permission_id", :null => false
   end
 
-  add_index "goldberg_roles_permissions", ["role_id"], :name => "fk_roles_permission_role_id"
   add_index "goldberg_roles_permissions", ["permission_id"], :name => "fk_roles_permission_permission_id"
+  add_index "goldberg_roles_permissions", ["role_id"], :name => "fk_roles_permission_role_id"
 
   create_table "goldberg_site_controllers", :force => true do |t|
-    t.string  "name"
-    t.integer "permission_id", :limit => 11
-    t.integer "builtin",       :limit => 11, :default => 0
+    t.string  "name",                         :null => false
+    t.integer "permission_id",                :null => false
+    t.integer "builtin",       :default => 0
   end
 
   add_index "goldberg_site_controllers", ["permission_id"], :name => "fk_site_controller_permission_id"
 
   create_table "goldberg_system_settings", :force => true do |t|
-    t.string  "site_name"
+    t.string  "site_name",                                           :null => false
     t.string  "site_subtitle"
-    t.string  "footer_message",                                    :default => ""
-    t.integer "public_role_id",                      :limit => 11
-    t.integer "session_timeout",                     :limit => 11, :default => 0,  :null => false
-    t.integer "site_default_page_id",                :limit => 11
-    t.integer "not_found_page_id",                   :limit => 11
-    t.integer "permission_denied_page_id",           :limit => 11
-    t.integer "session_expired_page_id",             :limit => 11
-    t.integer "menu_depth",                          :limit => 11, :default => 0,  :null => false
+    t.string  "footer_message",                      :default => ""
+    t.integer "public_role_id",                                      :null => false
+    t.integer "session_timeout",                     :default => 0,  :null => false
+    t.integer "site_default_page_id",                                :null => false
+    t.integer "not_found_page_id",                                   :null => false
+    t.integer "permission_denied_page_id",                           :null => false
+    t.integer "session_expired_page_id",                             :null => false
+    t.integer "menu_depth",                          :default => 0,  :null => false
     t.string  "start_path"
     t.string  "site_url_prefix"
     t.boolean "self_reg_enabled"
-    t.integer "self_reg_role_id",                    :limit => 11
+    t.integer "self_reg_role_id"
     t.boolean "self_reg_confirmation_required"
-    t.integer "self_reg_confirmation_error_page_id", :limit => 11
+    t.integer "self_reg_confirmation_error_page_id"
     t.boolean "self_reg_send_confirmation_email"
   end
 
-  add_index "goldberg_system_settings", ["public_role_id"], :name => "fk_system_settings_public_role_id"
-  add_index "goldberg_system_settings", ["site_default_page_id"], :name => "fk_system_settings_site_default_page_id"
-  add_index "goldberg_system_settings", ["not_found_page_id"], :name => "fk_system_settings_not_found_page_id"
-  add_index "goldberg_system_settings", ["permission_denied_page_id"], :name => "fk_system_settings_permission_denied_page_id"
   add_index "goldberg_system_settings", ["session_expired_page_id"], :name => "fk_system_settings_session_expired_page_id"
+  add_index "goldberg_system_settings", ["permission_denied_page_id"], :name => "fk_system_settings_permission_denied_page_id"
+  add_index "goldberg_system_settings", ["not_found_page_id"], :name => "fk_system_settings_not_found_page_id"
+  add_index "goldberg_system_settings", ["site_default_page_id"], :name => "fk_system_settings_site_default_page_id"
+  add_index "goldberg_system_settings", ["public_role_id"], :name => "fk_system_settings_public_role_id"
 
   create_table "goldberg_users", :force => true do |t|
-    t.string   "name"
-    t.string   "password"
-    t.integer  "role_id",                        :limit => 11
+    t.string   "name",                                         :null => false
+    t.string   "password",                       :limit => 40, :null => false
+    t.integer  "role_id",                                      :null => false
     t.string   "password_salt"
     t.string   "fullname"
     t.string   "email"
@@ -127,20 +127,20 @@ ActiveRecord::Schema.define(:version => 20080731220602) do
   add_index "goldberg_users", ["role_id"], :name => "fk_user_role_id"
 
   create_table "items", :force => true do |t|
-    t.string   "type",                                        :null => false
+    t.string   "type",                          :null => false
     t.string   "title"
     t.string   "source"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "published",                :default => true,  :null => false
-    t.boolean  "spam",                     :default => false, :null => false
-    t.integer  "user_id",    :limit => 11
+    t.boolean  "published",  :default => true,  :null => false
+    t.boolean  "spam",       :default => false, :null => false
+    t.integer  "user_id"
   end
 
   create_table "items_topics", :force => true do |t|
-    t.integer "item_id",  :limit => 11, :null => false
-    t.integer "topic_id", :limit => 11, :null => false
+    t.integer "item_id",  :null => false
+    t.integer "topic_id", :null => false
   end
 
   create_table "plugin_schema_migrations", :id => false, :force => true do |t|
@@ -151,24 +151,25 @@ ActiveRecord::Schema.define(:version => 20080731220602) do
   add_index "plugin_schema_migrations", ["plugin_name", "version"], :name => "unique_schema_migrations", :unique => true
 
   create_table "taggings", :force => true do |t|
-    t.integer  "tag_id",        :limit => 11
-    t.integer  "taggable_id",   :limit => 11
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
     t.string   "taggable_type"
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
   add_index "taggings", ["taggable_id", "taggable_type"], :name => "index_taggings_on_taggable_id_and_taggable_type"
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
 
   create_table "tags", :force => true do |t|
     t.string "name"
   end
 
   create_table "topics", :force => true do |t|
-    t.string   "title",                        :null => false
-    t.boolean  "active",     :default => true
+    t.string   "title",                         :null => false
+    t.boolean  "active",      :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description", :default => ""
   end
 
 end

@@ -5,6 +5,9 @@
 </p>
 <p><%= f.check_box :active %><%= f.label :active %></p>
 
+<p><%= f.label :description %>
+  <%= f.text_area :description %>
+</p>
 
 <p><%= f.label :tag_list, 'Tags (e.g. "garden,green,bauhaus")' %>
   <%= f.text_field :tag_list %>
