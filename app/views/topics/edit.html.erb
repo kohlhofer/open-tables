@@ -1,13 +1,10 @@
-<% @page_title = 'Edit topic' %>
+<h1><%= @page_title = "Edit topic" %></h1>
 
 <%= error_messages_for :topic %>
 
 <% form_for(@topic, :html => { :method => :put }) do |f| %>
   <%= render :partial => 'form' , :locals => {:f => f} %>
   <p>
-    <%= f.submit "Update" %>
+    <%= f.submit "Update" %> <%= link_to 'Cancel', @topic %>
   </p>
 <% end %>
-
-<%= link_to 'Show', @topic %> |
-<%= link_to 'Back', topics_path %>
