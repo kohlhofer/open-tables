@@ -3,6 +3,6 @@
 
 <ul id="topicList">
 <% @topics.each do |topic| %>
-  <li><%= link_to topic.title, topic %></li>
+  <li><%= link_to "<h2>"+topic.title+"</h2>", topic %></li>
 <% end %>
 </ul>
