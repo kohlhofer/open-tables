@@ -2,7 +2,7 @@
 
 <%= error_messages_for :topic %>
 
-<% form_for(:topic, @topic, :url => topics_url, :html => { :multipart => true }) do |f| %>
+<% form_for(:topic, @topic, :url => topics_url) do |f| %>
   <%= render :partial => 'form', :locals => {:f => f} %>
   
   <% unless logged_in? %>
