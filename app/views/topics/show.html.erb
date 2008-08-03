@@ -1,6 +1,6 @@
 <div id="topicNav">
   <%= render :partial => '/items/search' %>
-  <%= link_to 'edit topic', edit_topic_url(@topic) if current_user.admin? %>
+  <%= link_to 'Edit topic', edit_topic_url(@topic) if current_user.admin? %>
   <%= link_to 'New item', new_topic_item_url(@topic) %>
 </div>
 
