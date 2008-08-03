@@ -1,1 +1,30 @@
+/* @override http://localhost:3000/stylesheets/application.css */
 
+body {
+  font-family: arial, sans-serif;
+  font-size: 0.9em;
+  background-image:url('http://www.wag-architecture.co.uk/opentables/background_white.jpg');
+	margin: 0px;
+	padding: 0px;
+}
+
+a { color: #03A5D6; }
+a:visited { color: #03A5D6; }
+
+
+p.logo {
+  height: 80px;
+  background-color: #FFF;
+  margin: 0px;
+  padding: 0px;
+}
+
+p.logo a {
+  display: block;
+  height: 80px;
+  margin: 0px;
+  padding: 0px;
+  width:200px;
+text-indent: -6000px;
+background: #F00 url(/images/logo.gif) no-repeat left top;
+  }
