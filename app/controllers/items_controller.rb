@@ -95,6 +95,18 @@ class ItemsController < ApplicationController
     @tags = Item.tag_counts
   end
   
+  def add_tag
+    @item.tag_list.add(params[:tag])
+    respond_to do |format|
+      if @item.save!
+        flash[:notice] = "Added tag"
+      else
+        flash[:error] = "Couldn't add tag"
+      end
+      format.html { redirect_to :back and return }
+    end
+  end
+  
   private
   def current_item
     @item = Item.find(params[:id])

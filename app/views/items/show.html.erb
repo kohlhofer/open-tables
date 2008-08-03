@@ -1,11 +1,21 @@
+<% @page_title = @item.title %>
 <%= render :partial => @item.type.to_s.downcase, :locals => {:item => @item } %>
 <% @item.topics.each do |topic| %>
   <%= link_to topic.title, topic %>
 <% end %>
 <p>tags: <%= @item.tags.join(', ') %></p>
+<% form_tag({:action => :add_tag, :id => @item.id }, :method => :put) do -%>
+  <%= text_field_tag :tag %>
+  <%= submit_tag 'add tag', :name => nil %>
+<% end -%>
 
+topic tags:
 <% if @topic %>
-  <% @topic.items.tag_counts.each do |tag| %>
-    <%= tag %>
+  <ul id="topic_tags" class="tags">
+  <% @topic.tags.each do |tag| 
+    next if @item.tag_list.include?(tag)
+    %>
+    <li><%= link_to_function tag, "add_tag('%s')" % tag %></li>
   <% end %>
+  </ul>
 <% end %>
