@@ -1,5 +1,4 @@
-<% @page_title = h(@topic.title) %>
-<h1><%= h(@topic.title) %> <%= link_to_unless_current '(Change topic)', topics_url, :class => "changeTopic" %></h1>
+<h1><%= @page_title = h(@topic.title) %> <%= link_to_unless_current '(Change topic)', topics_url, :class => "changeTopic" %></h1>
 
 <div id="navigation">
   <ul>
