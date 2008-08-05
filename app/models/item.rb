@@ -11,4 +11,9 @@ class Item < ActiveRecord::Base
   def type_name=(klass)
     self[:type] = klass
   end
+  
+  def rejected_or_relevant
+    return 'rejected' if self.tag_list.include?('rejected')
+    return 'relevant' if self.tag_list.include?('relevant')
+  end
 end

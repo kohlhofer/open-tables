@@ -1,4 +1,5 @@
 <% @page_title = @item.title %>
+<div id="item-<%= @item.id %>" class="item <%= @item.type.downcase %> <%= @item.rejected_or_relevant %>">
 <%= render :partial => @item.type.to_s.downcase, :locals => {:item => @item } %>
 <% @item.topics.each do |topic| %>
   <%= link_to topic.title, topic %>
@@ -24,3 +25,9 @@ topic tags:
   <% end %>
   </ul>
 <% end %>
+
+
+rejected/relevant:
+<%= link_to_function 'relevant', "add_tag('relevant')" %>
+<%= link_to_function 'rejected', "add_tag('rejected')" %>
+
