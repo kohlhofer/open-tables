@@ -1,26 +1,30 @@
 <% @page_title = @item.title %>
-<%= render :partial => @item.type.to_s.downcase, :locals => {:item => @item } %>
-<% @item.topics.each do |topic| %>
-  <%= link_to topic.title, topic %>
-<% end %>
-<h3>tags</h3>
-  <ul>
+
+<div class="main">
+	<%= render :partial => @item.type.to_s.downcase, :locals => {:item => @item } %>
+	<% @item.topics.each do |topic| %>
+	  <%= link_to topic.title, topic %>
+	<% end %>
+</div>
+
+<div class="second">
+	<h2>tags</h2>
+	<ul class="tags">
+	<% if @topic %>
+	  <% @topic.tags.each do |tag| 
+	    next if @item.tag_list.include?(tag)
+	    %>
+	    <li><%= link_to_function tag, "add_tag('%s')" % tag %></li>
+	  <% end %>
+	<% end %>
   <% @item.tags.each do |tag| %>
     <li><%= link_to tag, { :controller => :items, :action => :index, :tags => tag.name, :topic_id => @topic.id } %></li>
   <% end %>
-  </ul>
-<% form_tag({:action => :add_tag, :id => @item.id }, :method => :put) do -%>
-  <%= text_field_tag :tag %>
-  <%= submit_tag 'add tag', :name => nil %>
-<% end -%>
+	</ul>
+	<% form_tag({:action => :add_tag, :id => @item.id }, :method => :put) do -%>
+	  <%= text_field_tag :tag %>
+	  <%= submit_tag 'add tag', :name => nil %>
+	<% end -%>
+</div>
 
-topic tags:
-<% if @topic %>
-  <ul id="topic_tags" class="tags">
-  <% @topic.tags.each do |tag| 
-    next if @item.tag_list.include?(tag)
-    %>
-    <li><%= link_to_function tag, "add_tag('%s')" % tag %></li>
-  <% end %>
-  </ul>
-<% end %>
+<div class="clearThis"> </div>
