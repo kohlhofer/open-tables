@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080803130240) do
+ActiveRecord::Schema.define(:version => 20080805093304) do
 
   create_table "goldberg_content_pages", :force => true do |t|
     t.string   "title"
@@ -138,7 +138,7 @@ ActiveRecord::Schema.define(:version => 20080803130240) do
     t.integer  "user_id",    :limit => 11
   end
 
-  create_table "items_topics", :force => true do |t|
+  create_table "items_topics", :id => false, :force => true do |t|
     t.integer "item_id",  :limit => 11, :null => false
     t.integer "topic_id", :limit => 11, :null => false
   end

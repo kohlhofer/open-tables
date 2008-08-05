@@ -12,6 +12,27 @@ body {
 
 }
 
+
+.main {
+  width: 69%;
+  padding: 0px;
+  float: left;
+}
+
+.second {
+  width: 28%;
+  padding: 0px;
+  float: right;
+  margin-left: 2%;
+}
+
+.clearThis {
+  clear: both;
+  margin: 0px;
+  padding: 0px;
+  height: 1px;
+}
+
 h1 {
   font-size: 1.4em;
   font-weight: normal;
@@ -126,7 +147,11 @@ form textarea {
 	width: 80%;
 }
 
-form input[type="text"] {
+form p.right label {
+  display: inline;
+  margin-left: 0.5em;
+}
+input[type="text"], input[type="password"] {
 	font-size: 1.2em;
 }
 
@@ -165,7 +190,6 @@ ul#topicList p {
 
 form select {
 	font-size: 1.1em;
-	height:5em;
 	width: 15em;
 }
 
