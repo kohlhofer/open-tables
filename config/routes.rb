@@ -1,10 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :topics do |topic|
-    topic.resources :items, :collection => {:tag_cloud => :get, :tags => :get }
+    topic.resources :items, :collection => {:tag_cloud => :get, :tags => :get },
+      :member => {:add_tag => :put }
   end
-  map.resources :items, :collection => {:tag_cloud => :get, :tags => :get, :add_tag => :put }
-  map.connect '/tag/:tag', :controller => "items", :action => "index"
-  map.connect '/topics/:topic_id/tag/*tags', :controller => "items", :action => "index"
+  map.resources :items, :collection => {:tag_cloud => :get, :tags => :get },
+    :member => {:add_tag => :put }
+  map.item_tags '/tag/*tags', :controller => "items", :action => "index"
+  map.topic_tags '/topics/:topic_id/tag/*tags', :controller => "items", :action => "index"
   map.tags '/tags', :controller => "items", :action => "tag_cloud"
 
 

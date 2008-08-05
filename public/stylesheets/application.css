@@ -225,3 +225,18 @@ form input[type="submit"] {
   display: inline;
   margin-right: 1em;
 }
+
+#tags {
+	padding: 0;
+}
+#tags li {
+	list-style: none;
+	padding: 3px 5px 3px 5px;
+	margin: 2px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	
+}
+#tags .set {
+	background-color: white;
+}

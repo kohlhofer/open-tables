@@ -1,4 +1,4 @@
-<h1>Item: <%= @page_title = h(@item.title) %> in <%= link_to h(@topic.title), @topic %></h1>
+<h1>Item: <%= @page_title = h(@item.title) %> in <%= link_to h(@topic.title), @topic if @topic %></h1>
 
 <div class="main">
 	<%= render :partial => @item.type.to_s.downcase, :locals => {:item => @item } %>
@@ -9,13 +9,7 @@
 
 <div class="second">
 	<h2>tags</h2>
-	<ul class="tags">
-	  <% @tags.each do |tag| %>
-	    <li><%= link_to_function(tag, "add_tag('%s')" % tag, 
-	      :class => (@item.tags.include?(tag) ? "set" : "")) if logged_in? %>
-	      <%= link_to tag, { :controller => :items, :action => :index, :tags => tag, :topic_id => @topic.id } %></li>
-	  <% end %>
-	</ul>
+	<%= render :partial => 'tag_list' %>
 	<% form_tag({:action => :add_tag, :id => @item.id }, :method => :put) do -%>
 	  <%= text_field_tag :tag %>
 	  <%= submit_tag 'add tag', :name => nil %>

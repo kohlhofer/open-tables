@@ -5,6 +5,10 @@ class Item < ActiveRecord::Base
   named_scope :published, :conditions => {:published => true}, :order => 'updated_at'
   acts_as_taggable
 
+  def before_validation
+    self.topics.uniq!
+  end
+
   def type_name
     return type.to_s
   end
