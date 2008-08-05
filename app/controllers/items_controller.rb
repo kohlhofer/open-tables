@@ -50,7 +50,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(params[:item])
-    @item.topics << @topic if @topic
+    @item.topics = [@topic] if @topic
     unless logged_in?
       @user = create_guest(params[:user])
       render :action => :new and return if @user.new_record?

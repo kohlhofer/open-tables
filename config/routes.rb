@@ -7,8 +7,6 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/topics/:topic_id/tag/*tags', :controller => "items", :action => "index"
   map.tags '/tags', :controller => "items", :action => "tag_cloud"
 
-  
-  map.admin '/admin', :controller => 'admin'
 
   # The priority is based upon order of creation: first created -> highest priority.
 
