@@ -99,24 +99,23 @@
     
     
     	<p>Please contact your system administrator.</p>
-- name: contact_us
+- name: about
   markup_style_id: 1
-  updated_at: 2008-07-30 12:52:14 Z
-  title: Contact Us
+  updated_at: 2008-08-03 12:22:26 Z
+  title: About
   permission_id: 3
   id: 6
-  content: |
-    h1. Contact Us
+  content: |-
+    h1. About
     
-    Visit the Goldberg Project Homepage at "http://goldberg.rubyforge.org":http://goldberg.rubyforge.org for further information on Goldberg.  Visit the Goldberg RubyForge Project Info Page at "http://rubyforge.org/projects/goldberg":http://rubyforge.org/projects/goldberg to access the project's files and development information.
-
+    bla bla bla
   markup_style: Textile
   created_at: 2006-06-12 10:13:47 Z
   content_cache: |-
-    <h1>Contact Us</h1>
+    <h1>About</h1>
     
     
-    	<p>Visit the Goldberg Project Homepage at <a href="http://goldberg.rubyforge.org">http://goldberg.rubyforge.org</a> for further information on Goldberg.  Visit the Goldberg RubyForge Project Info Page at <a href="http://rubyforge.org/projects/goldberg">http://rubyforge.org/projects/goldberg</a> to access the project&#8217;s files and development information.</p>
+    	<p>bla bla bla</p>
 - name: site_admin
   markup_style_id: 1
   updated_at: 2008-07-30 12:52:14 Z
