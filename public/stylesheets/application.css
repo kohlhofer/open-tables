@@ -12,6 +12,27 @@ body {
 
 }
 
+
+.main {
+  width: 69%;
+  padding: 0px;
+  float: left;
+}
+
+.second {
+  width: 28%;
+  padding: 0px;
+  float: right;
+  margin-left: 2%;
+}
+
+.clearThis {
+  clear: both;
+  margin: 0px;
+  padding: 0px;
+  height: 1px;
+}
+
 h1 {
   font-size: 1.4em;
   font-weight: normal;
