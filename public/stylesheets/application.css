@@ -126,7 +126,7 @@ form textarea {
 	width: 80%;
 }
 
-form input[type="text"] {
+input[type="text"], input[type="password"] {
 	font-size: 1.2em;
 }
 

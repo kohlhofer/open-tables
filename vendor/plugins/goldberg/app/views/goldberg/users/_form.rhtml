@@ -1,53 +1,51 @@
 <%= error_messages_for 'user' %>
 
 <table>
+<p>
+<label>Userid (screen name) </label>
+<%= text_field 'user', 'name'  %>
+</p>
 
-<tr>
-<th>Userid (screen name) </th>
-<td><%= text_field 'user', 'name'  %></td>
-</tr>
+<p>
+<label>Full name (real) </label>
+<%= text_field 'user', 'fullname'  %>
+</p>
 
-<tr>
-<th> Full name (real) </th>
-<td><%= text_field 'user', 'fullname'  %></td>
-</tr>
-
-<tr>
-<th> Email Address </th>
-<td><%= text_field 'user', 'email'  %></td>
-</tr>
+<p>
+<label>Email Address </label>
+<%= text_field 'user', 'email'  %>
+</p>
 
 <% if not @self_reg -%>
-<tr>
-<th> Role </th>
-<td> <%= collection_select 'user', 'role_id', @roles, :id, :name %> </td>
-</tr>
+<p>
+<label>Role</label>
+<%= collection_select 'user', 'role_id', @roles, :id, :name %>
+</p>
 
-<tr>
-<th> Registration Confirmation <br />Required </th>
-<td><%= check_box 'user', 'self_reg_confirmation_required' %></td>
-
-<tr>
-<th> Start Path </th>
-<td><%= text_field 'user', 'start_path' %></td>
-</tr>
+<p>
+<label>Registration Confirmation</label>
+<%= check_box 'user', 'self_reg_confirmation_required' %>
+</p>
+<p>
+<label>Start Path</label>
+<%= text_field 'user', 'start_path' %>
+</p>
 <% end -%>
 
 <% if @password_change -%>
-<tr>
-<th> Old Password </th>
-<td> <%= password_field 'user', 'old_password' %> </td>
-</tr>
+<p>
+<label>Old Password</label>
+<%= password_field 'user', 'old_password' %>
+</p>
 <% end -%>
 
-<tr>
-<th> <% if @password_change then %> New <% end %>Password </th>
-<td> <%= password_field 'user', 'clear_password' %> </td>
-</tr>
+<p>
+<label><% if @password_change then %> New <% end %>Password</label>
+<%= password_field 'user', 'clear_password' %>
+</p>
 
-<tr>
-<th> Confirm Password </th>
-<td> <%= password_field 'user', 'confirm_password' %> </td>
-</tr>
-
+<p>
+<label>Confirm Password</label>
+<%= password_field 'user', 'confirm_password' %>
+</p>
 </table>
