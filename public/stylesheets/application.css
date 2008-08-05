@@ -126,6 +126,10 @@ form textarea {
 	width: 80%;
 }
 
+form p.right label {
+  display: inline;
+  margin-left: 0.5em;
+}
 input[type="text"], input[type="password"] {
 	font-size: 1.2em;
 }
@@ -165,7 +169,6 @@ ul#topicList p {
 
 form select {
 	font-size: 1.1em;
-	height:5em;
 	width: 15em;
 }
 
