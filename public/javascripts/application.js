@@ -14,3 +14,9 @@ function hide_all(selectbox) {
 function show(klass) {
 	$("." + klass.toLowerCase()).show();
 }
+
+function add_tag(tag) {
+	$.post("", {
+		tag: tag});
+
+}

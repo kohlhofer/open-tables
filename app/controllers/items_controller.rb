@@ -29,6 +29,9 @@ class ItemsController < ApplicationController
     if !@topic and @item.topics and @item.topics.size == 1
       redirect_to topic_item_url(@item.topics[0], @item) and return
     end
+    @tags = @item.tags
+    @tags += @topic.tags if @topic
+    @tags = @tags.collect{|tag| tag.name }.sort
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @item }
