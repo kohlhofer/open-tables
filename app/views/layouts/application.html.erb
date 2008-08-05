@@ -15,6 +15,9 @@
   <link rel="stylesheet" href="/goldberg/stylesheets/goldberg.css" type="text/css" media="screen" />
   <link rel="stylesheet" href="/stylesheets/application.css" type="text/css" media="screen" />
   <%= javascript_include_tag "jquery-1.2.6.min", "application" %>
+  <% javascript_tag do -%>
+    var authenticity_token = "<%= escape_javascript form_authenticity_token() %>";
+  <% end -%>
 </head>
 
 <body id="c-<%= h(params[:controller]) %>">
@@ -35,10 +38,6 @@
 		<%= link_to "Open Tables", topics_path, :id =>  "logo", :title => "back to home page"%>
   </div>
 
-
-  
-
-
 <div id="wrap" class="mainSize">
   <% flash.each do |type, message| %>
   <div class="<%= type %>">
@@ -47,9 +46,6 @@
   <% end %>
 
   <%= yield %>
-
-
-
 
   <div id="footer">
   <ul>
