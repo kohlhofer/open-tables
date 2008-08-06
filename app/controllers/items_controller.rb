@@ -104,7 +104,7 @@ class ItemsController < ApplicationController
     @item.toggle_relevant(params[:tag])
     respond_to do |format|
       if @item.save(false)
-        format.js { render :partial => 'tag', :locals => {:tag => params[:tag]} }
+        format.js { render :partial => 'relevant_rejected' }
       end
     end
   end
