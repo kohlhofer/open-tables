@@ -48,3 +48,19 @@ function delete_tag(item,url) {
 	);
 return true;
 }
+
+function toggle_relevant(item,tag,url) {
+	$.post( 
+		url,
+		{
+			tag: tag,
+			type: "post",
+			authenticity_token: authenticity_token,
+			_method: "put"
+		}	,
+		function(result) {
+			$(item).parent().parent().replaceWith(result);
+		}
+	);
+	return true;
+}

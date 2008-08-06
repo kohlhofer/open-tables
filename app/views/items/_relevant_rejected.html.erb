@@ -1,3 +1,6 @@
 <ul>
-  <li class="<%= 'set' if @item.relevant? %>"><%= link_to_function</li>
+  <li class="<%= 'set' if @item.relevant? %>"><%= @item.relevant? ? 'relevant' : 
+    link_to_function('relevant', 'toggle_relevant(this, "relevant", "%s");' % toggle_relevant_item_url(@item)) %></li>
+    <li class="<%= 'set' if @item.rejected? %>"><%= @item.rejected? ? 'rejected' : 
+      link_to_function('rejected', 'toggle_relevant(this, "rejected", "%s");' % toggle_relevant_item_url(@item)) %></li>
 </ul>
