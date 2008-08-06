@@ -1,10 +1,10 @@
 <div id="topicNav">
   <%= render :partial => '/items/search' %>
-  <%= link_to 'edit topic', edit_topic_url(@topic) if logged_in? and current_user.admin? %>
+  <%= link_to 'Edit topic', edit_topic_url(@topic) if logged_in? and current_user.admin? %>
   <%= link_to 'New item', new_topic_item_url(@topic) %>
 </div>
 
-<h1>Topic: <%= @page_title = h(@topic.title) %> <%= link_to_unless_current '(Change topic)', topics_url, :class => "changeTopic" %></h1>
+<h1><%= @page_title = h(@topic.title) %></h1>
 
 
 <p class="topicTags">Tags for this topic are <%= @topic.tags.join(', ') %></p>

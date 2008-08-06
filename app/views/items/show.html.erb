@@ -1,20 +1,31 @@
-<h1>Item: <%= @page_title = h(@item.title) %> in <%= link_to h(@topic.title), @topic if @topic %></h1>
-
 <div id="topicNav">
-  <%= link_to 'edit item', edit_item_url(@item) if logged_in? and current_user.admin? %>
+  <%= link_to 'Edit item', edit_item_url(@item) if logged_in? and current_user.admin? %>
   <%#= link_to_remote 'delete item', item_url(@item), :method => :delete, :confirm => 'Are you sure?' if logged_in? and current_user.admin? %>
 </div>
+
+<h1><%= @page_title = h(@item.title) %></h1>
+<p>This item belongs to <%= link_to h(@topic.title), @topic if @topic %></p>
+
+
 
 
 <div class="main">
 	<%= render :partial => @item.type.to_s.downcase, :locals => {:item => @item } %>
 	<% @item.topics.each do |topic| %>
-	  <%= link_to topic.title, topic %>
+	<% end %>
+	
+	<% if logged_in? %>
+	
+	<h2>This item is ...</h2>
+
+	<ul id="relevant">
+	  <%= render :partial => 'relevant_rejected' %>
+	</ul>
 	<% end %>
 </div>
 
 <div class="second">
-  <h2>tags</h2>
+  <h2>Available tags</h2>
   <ul id="tags">
     <%= render :partial => 'tag', :collection => @tags %>
   </ul>
@@ -23,11 +34,6 @@
 	  <%= submit_tag 'add tag', :name => nil %>
 	<% end -%>
 </div>
-<% if logged_in? %>
-rejected/relevant:
-<ul id="relevant">
-  <%= render :partial => 'relevant_rejected' %>
-</ul>
-<% end %>
+
 
 <div class="clearThis"> </div>

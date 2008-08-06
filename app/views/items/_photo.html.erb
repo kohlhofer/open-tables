@@ -1,2 +1,2 @@
 <%= image_tag item.body, :alt => item.title %>
-<%= link_to 'from %s' % item.source_short, item.source %>
+<%= link_to "Original", item.source, :class => "source" unless item.source.blank? %>
