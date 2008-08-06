@@ -1,9 +1,0 @@
-<ul id="tags">
-<% @tags.each do |tag| %>
-  <% if @item.tag_list.include?(tag) %>
-  <li class="set"><%= link_to tag, topic_tags_url(@topic, tag) %></li>
-  <% else %>
-  <li><%= logged_in? ? link_to_function(tag, "add_tag('%s', '%s')" % [add_tag_item_url(@item), tag]) : link_to(tag, topic_tags_url(@topic, tag)) %></li>
-  <% end %>
-<% end %>
-</ul>

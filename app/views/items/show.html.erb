@@ -8,8 +8,10 @@
 </div>
 
 <div class="second">
-	<h2>tags</h2>
-	<%= render :partial => 'tag_list' %>
+  <h2>tags</h2>
+  <ul id="tags">
+    <%= render :partial => 'tag', :collection => @tags %>
+  </ul>
 	<% form_tag({:action => :add_tag, :id => @item.id }, :method => :put) do -%>
 	  <%= text_field_tag :tag %>
 	  <%= submit_tag 'add tag', :name => nil %>

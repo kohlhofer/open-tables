@@ -240,3 +240,7 @@ form input[type="submit"] {
 #tags .set {
 	background-color: white;
 }
+#tags .delete {
+	float: right;
+	margin-top: -1.2em;
+}

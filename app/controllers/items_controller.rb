@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_filter :current_item, :only => [:show, :edit, :update, :add_tag, :destroy]
+  before_filter :current_item, :only => [:show, :edit, :update, :add_tag, :delete_tag, :destroy]
   before_filter :current_topic
   
   include TagsHelper
@@ -105,10 +105,20 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if @item.save!
         flash[:notice] = "Added tag"
+        format.js { render :partial => 'tag', :locals => {:tag => params[:tag]} }
       else
         flash[:error] = "Couldn't add tag"
       end
       format.html { redirect_to :back and return }
+    end
+  end
+  
+  def delete_tag
+    @item.tag_list.remove(params[:tag])
+    respond_to do |format|
+      if @item.save!
+        format.js { render :partial => 'tag', :locals => {:tag => params[:tag]} }
+      end
     end
   end
   
