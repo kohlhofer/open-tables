@@ -5,10 +5,11 @@ jQuery.ajaxSetup({
 })
 
 function hide_all(selectbox) {
-	$(selectbox.options).each( function(a,b) {
+	$(selectbox).children('option').each( function(a,b) {
 		if (b.text != "") {
 			$("." + b.text.toLowerCase()).hide();
-		} });
+		}
+	});
 }
 
 function show(klass) {
@@ -16,7 +17,6 @@ function show(klass) {
 }
 
 function add_tag(url, tag) {
-	console.log(authenticity_token);
 	$.ajax( 
 		{
 		url: url,
