@@ -364,4 +364,6 @@ fieldset {
   text-align: center;
   padding: 0.8em 0px;
   font-weight: bold;
+  	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
 }
