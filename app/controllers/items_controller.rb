@@ -103,7 +103,7 @@ class ItemsController < ApplicationController
   def add_tag
     @item.tag_list.add(params[:tag])
     respond_to do |format|
-      if @item.save!
+      if @item.save(false)
         flash[:notice] = "Added tag"
         format.js { render :partial => 'tag', :locals => {:tag => params[:tag]} }
       else
@@ -116,7 +116,7 @@ class ItemsController < ApplicationController
   def delete_tag
     @item.tag_list.remove(params[:tag])
     respond_to do |format|
-      if @item.save!
+      if @item.save(false)
         format.js { render :partial => 'tag', :locals => {:tag => params[:tag]} }
       end
     end
