@@ -1,4 +1,7 @@
-/* @override http://nokahuna.dev:3000/stylesheets/application.css */
+/* @override 
+	http://nokahuna.dev:3000/stylesheets/application.css
+	http://localhost:3000/stylesheets/application.css
+*/
 
 body {
   font-family: arial, sans-serif;
@@ -278,4 +281,15 @@ fieldset {
 #tags .delete {
 	float: right;
 	margin-top: -1.2em;
+}
+
+
+
+#reasons ul, #reasons ol{
+  line-height: 1.4em;
+  margin-bottom: 2em;
+}
+
+#reasons li {
+  margin-bottom: 0.5em;
 }
