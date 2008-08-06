@@ -6,6 +6,10 @@ class Item < ActiveRecord::Base
   acts_as_taggable
 
 
+  def source_short
+    self.source.gsub(/https?:\/\//, '').gsub(/\/$/, '')
+  end
+
   def toggle_relevant(tag)
     self.tag_list.add(tag)
     self.tag_list.remove(tag == 'relevant' ? 'rejected' : 'relevant')

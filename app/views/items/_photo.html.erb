@@ -1,1 +1,2 @@
-<%= image_tag item.source, :alt => item.title %>
+<%= image_tag item.body, :alt => item.title %>
+<%= link_to 'from %s' % item.source_short, item.source %>
