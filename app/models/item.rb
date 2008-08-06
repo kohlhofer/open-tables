@@ -15,7 +15,7 @@ class Item < ActiveRecord::Base
     self.tag_list.remove(tag == 'relevant' ? 'rejected' : 'relevant')
   end
   def filtered_tags
-    return tags
+    return tags.reject{|tag| ['relevant', 'rejected'].include?(tag.to_s) }
   end
 
   def before_validation
