@@ -5,12 +5,46 @@ jQuery.ajaxSetup({
 })
 
 function hide_all(selectbox) {
-	$(selectbox.options).each( function(a,b) {
+	$(selectbox).children('option').each( function(a,b) {
 		if (b.text != "") {
-			$("." + b.text.toLowerCase()).hide(); 
-		} });
+			$("." + b.text.toLowerCase()).hide();
+		}
+	});
 }
 
 function show(klass) {
 	$("." + klass.toLowerCase()).show();
+}
+
+function add_tag(item,url) {
+	$.post( 
+		url,
+		{
+			type: "post",
+			tag: item.text,
+			authenticity_token: authenticity_token,
+			_method: "put"
+		}	,
+		function(result) {
+			$(item).parent().replaceWith(result);
+		}
+	);
+return true;
+}
+
+
+function delete_tag(item,url) {
+	$.post( 
+		url,
+		{
+			type: "post",
+			tag: $(item).prev().text(),
+			authenticity_token: authenticity_token,
+			_method: "delete",
+		},
+		function(result) {
+			$(item).parent().replaceWith(result);
+		}
+	);
+return true;
 }

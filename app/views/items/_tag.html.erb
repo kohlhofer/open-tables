@@ -1,0 +1,6 @@
+<% if @item.tag_list.include?(tag) %>
+<li class="set"><%= link_to tag, topic_tags_url(@topic, tag) %>
+<%= link_to_function("x", "delete_tag(this, '%s')" % delete_tag_item_url(@item), :class => "delete") if logged_in? %></li>
+<% else %>
+<li><%= logged_in? ? link_to_function(tag, "add_tag(this, '%s')" % add_tag_item_url(@item)) : link_to(tag, topic_tags_url(@topic, tag)) %></li>
+<% end %>

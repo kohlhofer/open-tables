@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_filter :current_item, :only => [:show, :edit, :update, :add_tag, :destroy]
+  before_filter :current_item, :only => [:show, :edit, :update, :add_tag, :delete_tag, :destroy]
   before_filter :current_topic
   
   include TagsHelper
@@ -29,6 +29,9 @@ class ItemsController < ApplicationController
     if !@topic and @item.topics and @item.topics.size == 1
       redirect_to topic_item_url(@item.topics[0], @item) and return
     end
+    @tags = @item.tags
+    @tags += @topic.tags if @topic
+    @tags = @tags.collect{|tag| tag.name }.sort.uniq
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @item }
@@ -58,7 +61,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if @item.save
         flash[:notice] = 'Item was successfully created.'
-        format.html { render :action => "show" and return }
+        format.html { redirect_to item_url(@item) and return }
         format.xml  { render :xml => @item, :status => :created, :location => @item }
       else
         flash[:error] = 'Item couldn\'t be created.'
@@ -73,7 +76,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if @item.update_attributes(params[:item])
         flash[:notice] = 'Item was successfully updated.'
-        format.html { render :action => "show" and return }
+        format.html { redirect_to item_url(@item) and return }
         format.xml  { head :ok }
       else
         flash[:error] = 'Item couldn\'t be updated.'
@@ -100,12 +103,22 @@ class ItemsController < ApplicationController
   def add_tag
     @item.tag_list.add(params[:tag])
     respond_to do |format|
-      if @item.save!
+      if @item.save(false)
         flash[:notice] = "Added tag"
+        format.js { render :partial => 'tag', :locals => {:tag => params[:tag]} }
       else
         flash[:error] = "Couldn't add tag"
       end
       format.html { redirect_to :back and return }
+    end
+  end
+  
+  def delete_tag
+    @item.tag_list.remove(params[:tag])
+    respond_to do |format|
+      if @item.save(false)
+        format.js { render :partial => 'tag', :locals => {:tag => params[:tag]} }
+      end
     end
   end
   

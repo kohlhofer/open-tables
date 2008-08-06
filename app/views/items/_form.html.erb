@@ -1,4 +1,4 @@
-
+<% # a few notes to self: Use input-fields only once, you labels as often as you want to %>
 <p><%= f.label :type, 'Type' %>
   <%= f.select :type_name, ITEM_TYPES.collect{|name| [name, name]}, {:include_blank => true},{ :onchange => 'hide_all(this); show(this.value);'} %>
 </p>
@@ -7,18 +7,22 @@
   <%= f.text_field :title %>
 </p>
 
-<p class="article video photo weblink"><%= f.label :source, 'Source' %>
+<p class="article video photo weblink"><%= f.label :source, 'Source url' %>
   <%= f.text_field :source %>
 </p>
 
-<p class="photo"><%= f.label :body, 'weblink' %>
-  <%= f.text_field :body %>
-</p>
-
-<p><%= f.label :tag_list, 'Tags (e.g. "garden,green,bauhaus")' %>
+<p class="article video photo weblink"><%= f.label :tag_list, 'Tags (e.g. "garden,green,bauhaus")' %>
   <%= f.text_field :tag_list %>
 </p>
 
-<p class="article"><%= f.label :body, 'body' %>
+<p class="article video photo"><%= f.label :body, 'Text', :class => "article" %>
+  <%= f.label :body, 'Photo or video url', :class => "photo video" %>
   <%= f.text_area :body %>
 </p>
+
+<% javascript_tag do -%>
+  $(document).ready(function(){
+    hide_all($('#item_type_name'));
+    <% if @item.type_name != "" %>show('<%=@item.type || '' %>')<% end %>
+  });
+<% end %>
