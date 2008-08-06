@@ -272,7 +272,7 @@ fieldset {
 	-moz-border-radius: 5px;
 	
 }
-#tags .set {
+#tags .set, #relevant .set {
 	background-color: white;
 }
 #tags .delete {

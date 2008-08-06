@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_filter :current_item, :only => [:show, :edit, :update, :add_tag, :delete_tag, :destroy]
+  before_filter :current_item, :only => [:show, :edit, :update, :add_tag, :delete_tag, :toggle_relevant, :destroy]
   before_filter :current_topic
   
   include TagsHelper
@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
     if !@topic and @item.topics and @item.topics.size == 1
       redirect_to topic_item_url(@item.topics[0], @item) and return
     end
-    @tags = @item.tags
+    @tags = @item.filtered_tags
     @tags += @topic.tags if @topic
     @tags = @tags.collect{|tag| tag.name }.sort.uniq
     respond_to do |format|
@@ -100,6 +100,14 @@ class ItemsController < ApplicationController
     @tags = Item.tag_counts
   end
   
+  def toggle_relevant
+    @item.toggle_relevant(params[:tag])
+    respond_to do |format|
+      if @item.save(false)
+        format.js { render :partial => 'tag', :locals => {:tag => params[:tag]} }
+      end
+    end
+  end
   def add_tag
     @item.tag_list.add(params[:tag])
     respond_to do |format|
