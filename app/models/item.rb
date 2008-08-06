@@ -5,6 +5,15 @@ class Item < ActiveRecord::Base
   named_scope :published, :conditions => {:published => true}, :order => 'updated_at'
   acts_as_taggable
 
+
+  def toggle_relevant(tag)
+    self.tag_list.add(tag)
+    self.tag_list.remove(tag == 'relevant' ? 'rejected' : 'relevant')
+  end
+  def filtered_tags
+    return tags
+  end
+
   def before_validation
     self.topics.uniq!
   end
@@ -16,8 +25,15 @@ class Item < ActiveRecord::Base
     self[:type] = klass
   end
   
+  def rejected?
+    self.tag_list.include?('rejected')
+  end
+  def relevant?
+    self.tag_list.include?('relevant')
+  end
   def rejected_or_relevant
-    return 'rejected' if self.tag_list.include?('rejected')
-    return 'relevant' if self.tag_list.include?('relevant')
+    return 'rejected' if rejected?
+    return 'relevant' if relevant?
+    return false
   end
 end

@@ -1,5 +1,11 @@
 <h1>Item: <%= @page_title = h(@item.title) %> in <%= link_to h(@topic.title), @topic if @topic %></h1>
 
+<div id="topicNav">
+  <%= link_to 'edit item', edit_item_url(@item) if logged_in? and current_user.admin? %>
+  <%#= link_to_remote 'delete item', item_url(@item), :method => :delete, :confirm => 'Are you sure?' if logged_in? and current_user.admin? %>
+</div>
+
+
 <div class="main">
 	<%= render :partial => @item.type.to_s.downcase, :locals => {:item => @item } %>
 	<% @item.topics.each do |topic| %>
@@ -19,8 +25,9 @@
 </div>
 <% if logged_in? %>
 rejected/relevant:
-<%= link_to_function 'relevant', "add_tag('relevant')" %>
-<%= link_to_function 'rejected', "add_tag('rejected')" %>
+<ul id="relevant">
+  <%= render :partial => 'relevant_rejected' %>
+</ul>
 <% end %>
 
 <div class="clearThis"> </div>
