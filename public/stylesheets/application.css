@@ -300,6 +300,7 @@ fieldset {
 	text-decoration: none;
 	color: #933;
 	text-transform: uppercase;
+	font-size: 0.8em;
 }
 
 #tags .add {
@@ -307,6 +308,11 @@ fieldset {
 	text-decoration: none;
 	color: #3b611e;
 	text-transform: uppercase;
+	font-size: 0.8em;
+}
+
+#tags .add:hover {
+  color: #5a952e;
 }
 
 #tags .delete:hover {
@@ -321,4 +327,41 @@ fieldset {
 
 #reasons li {
   margin-bottom: 0.5em;
+}
+
+
+#sorting {
+	margin: 3em 0px 1em 0px;
+}
+
+
+#sorting span {
+  float: left;
+  width: 40%;
+}
+
+#sorting span a {
+  font-size: 1.3em;
+  display: block;
+  text-decoration: underline;
+  background-color: #EEE;
+  text-align: center;
+  padding: 0.6em 0px;
+  margin-top: 0.2em;
+}
+
+#sorting span a:hover {
+  background-color: #d5e3ed;
+}
+
+
+
+#sorting span.set {
+  font-size: 1.3em;
+  display: block;
+  text-decoration: none;
+  background-color: #5ca5d6;
+  text-align: center;
+  padding: 0.8em 0px;
+  font-weight: bold;
 }
