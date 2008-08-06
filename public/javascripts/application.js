@@ -21,7 +21,7 @@ function add_tag(item,url) {
 		url,
 		{
 			type: "post",
-			tag: item.text,
+			tag: $(item).next().text(),
 			authenticity_token: authenticity_token,
 			_method: "put"
 		}	,
@@ -38,7 +38,7 @@ function delete_tag(item,url) {
 		url,
 		{
 			type: "post",
-			tag: $(item).prev().text(),
+			tag: $(item).next().text(),
 			authenticity_token: authenticity_token,
 			_method: "delete",
 		},
