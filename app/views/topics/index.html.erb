@@ -1,6 +1,3 @@
-<h1><%= @page_title = "Select Topic" %>:</h1>
-
-
 <div class="second">
 	<h2>About Open Tables</h2>
 	<p>Open Tables Ecology is a study in contemporary interaction theory, or Ubiquitous Computing.</p>
@@ -8,17 +5,17 @@
 </div>
 
 <div class="main">
-<ul id="topicList">
-<% @topics.each do |topic| %>
-	<li>
-		<a href="<%= url_for(topic) %>">
-	  	<h2><%= topic.title %></h2>
-	  	<div><%= textilize(topic.description) %></div>
-		</a>
-	</li>
-<% end %>
-</ul>
-
+	<h1><%= @page_title = "Available topics" %></h1>
+	<ul id="topicList">
+	<% @topics.each do |topic| %>
+		<li>
+			<a href="<%= url_for(topic) %>">
+		  	<h2><%= topic.title %></h2>
+		  	<div><%= textilize(topic.description) %></div>
+			</a>
+		</li>
+	<% end %>
+	</ul>
 </div>
 
-<div class="clearThis"> </a>
+<div class="clearThis" > </div>

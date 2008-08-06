@@ -7,13 +7,16 @@
 <h1>Topic: <%= @page_title = h(@topic.title) %> <%= link_to_unless_current '(Change topic)', topics_url, :class => "changeTopic" %></h1>
 
 
-<p class="topicTags">Topic tags are: <%= @topic.tags.join(', ') %></p>
+<p class="topicTags">Tags for this topic are <%= @topic.tags.join(', ') %></p>
 
 <div class="second">
-	<ul><% tag_cloud @topic.items.tag_counts, %w(css1 css2 css3 css4) do |tag, css_class| %>
-	   <li><%= link_to tag.name, { :controller => :items, :action => :index, :tags => tag.name, :topic_id => @topic.id }, :class => css_class %></li>
-	 <% end %>
-	</ul>
+	<div id="tagFilter">
+		<h2>Filter this topic by tag:</h2>
+		<ul><% tag_cloud @topic.items.tag_counts, %w(css1 css2 css3 css4) do |tag, css_class| %>
+		   <li><%= link_to tag.name, { :controller => :items, :action => :index, :tags => tag.name, :topic_id => @topic.id }, :class => css_class %></li>
+		 <% end %>
+		</ul>
+	</div>
 </div>
 
 <div class="main">

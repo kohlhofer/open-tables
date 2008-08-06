@@ -4,10 +4,8 @@
    <div id="ErrorExplanation"><%= flash[:notice] %></div>
 <% end -%>
 
-<p> Please enter your username and password to access the site.</p>
-
 <% form_tag :action => 'login' do -%>
-  <p><label for="login_name">Name</label>
+  <p><label for="login_name">User name</label>
   <%= text_field 'login', 'name'  %></p>
 
   <p><label for="login_password">Password</label>
