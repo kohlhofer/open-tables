@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @items }
+      format.xml # index.xml.erb
     end
   end
 
