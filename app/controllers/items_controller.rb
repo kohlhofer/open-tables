@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml { @tags = @items.collect{|item| item.tags }.uniq }# index.xml.erb
+      format.xml { @tags = @items.collect{|item| item.tags }.flatten.uniq }# index.xml.erb
     end
   end
 
