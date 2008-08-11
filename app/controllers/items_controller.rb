@@ -27,14 +27,14 @@ class ItemsController < ApplicationController
 
   def show
     if !@topic and @item.topics and @item.topics.size == 1
-      redirect_to topic_item_url(@item.topics[0], @item) and return
+      redirect_to formatted_topic_item_url(@item.topics[0], @item, params[:format]) and return
     end
     @tags = @item.filtered_tags
     @tags += @topic.tags if @topic
     @tags = @tags.collect{|tag| tag.name }.sort.uniq
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @item }
+      format.xml  {  }
     end
   end
 
