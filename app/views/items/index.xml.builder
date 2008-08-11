@@ -1,24 +1,28 @@
-xml.instruct! :xml, :version=>"1.0" 
-xml.rss(:version=>"2.0") do
-  xml.channel do
-    xml.title(Goldberg.settings.site_name)
-    xml.link(Goldberg.settings.site_url_prefix)
-    xml.language("en-UK")
+xml.tag! "graph" do
+  xml.tag! "tags" do
+    @tags.each do |tag|
+      xml.tag! "tag", {:id => tag.id, :tag => tag}
+    end
+  end
+  xml.tag! "items" do
     for item in @items
       xml.item do
         xml.tag! "type", item.type
         xml.title(item.title)
         # TODO xml.cdata!
-        xml.tag! "body", ( render(:file => "items/_" + item.type.to_s.downcase + ".html.erb", :locals => {:item => item }))
-        xml.tag! "source", item.source
-        xml.tag! "tags" do
-          for tag in item.tags
-            xml.tag! "tag", {:id => tag.id, :tag => tag}
-          end
+        xml.tag! "body" do
+          xml.cdata! ( render(:file => "items/_" + item.type.to_s.downcase + ".html.erb", :locals => {:item => item }))
         end
-        xml.pubDate(item.updated_at.rfc2822)
+        xml.tag! "source", item.source
+        xml.tag! "created_at", (item.updated_at.rfc2822)
         xml.link(item_url(item))
-        xml.guid(item_url(item))
+      end
+    end
+  end
+  xml.tag! "tagEdges" do
+    @items.each do |item|
+      item.tags.each do |tag|
+        xml.tag! "tagEdge", {:item_id => item.id, :tag_id => tag.id }
       end
     end
   end
