@@ -1,0 +1,20 @@
+
+<p><label>Title: <br />
+  <%= f.text_field :title %>
+</label></p>
+<p><label>Feed URL: <br />
+  <%= f.text_field :url %>
+</label></p>
+
+<p><label>URL: <br />
+  <%= f.text_field :alternative_url %>
+</label></p>
+
+<p><label>Type: <br />
+  <%= f.select :factory, FEED_TYPES %>
+</label></p>
+
+<p><label>Topic: <br />
+  <%= f.select :topic, Topic.find(:all, :select => "id, title").collect{|t| [t.title, t.id]} %>
+</label></p>
+

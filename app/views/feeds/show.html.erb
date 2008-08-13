@@ -1,0 +1,17 @@
+<% @page_title = 'Feed for %s' % @feed.title %>
+
+<ul id="feedinfo">
+  <li>Feed URL: <%= link_to @feed.url, @feed.url %></li>
+  <li>Alternative URL: <%= link_to @feed.alternative_url, @feed.alternative_url %></li>
+<% unless @feed.user.nil? %>
+  <li>Added by <%= link_to feed.user.name, user_show_url(feed.user) %></li>
+<% end %>
+</ul>
+
+<% @feed.items.each do |item| %>
+  <%= render :partial => '/items/%s' % @feed.factory, :locals => {:item => item} %>
+<% end %>
+
+<%= link_to 'Ping', :controller => :feeds, :action => :ping, :url => @feed.url %> |
+<%= link_to 'Edit', edit_feed_path(@feed) %> |
+<%= link_to 'Back', feeds_path %>

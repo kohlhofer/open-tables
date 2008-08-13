@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :feeds, :collection => {:ping => :any}
+
   map.resources :topics do |topic|
     topic.resources :items, :collection => {:tag_cloud => :get, :tags => :get },
       :member => {:add_tag => :put, :delete_tag => :delete, :toggle_relevant => :put }
