@@ -11,7 +11,7 @@ class Feed < ActiveRecord::Base
   
   def refresh
     feed = FeedTools::Feed.open(self.url)
-    feed.items.each do |item|
+    feed.items.reverse.each do |item|
       send('create_%s' % self.factory, item)
     end
   end
