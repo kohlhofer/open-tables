@@ -9,6 +9,7 @@
   <meta name="keywords" content="" />
   <meta name="language" content="en-uk" />
   <meta name="robots" content="follox,index" />
+  <link rel="alternate" type="application/xml" href="<%= Goldberg.settings.site_url_prefix %>items.xml" title="<%= Goldberg.settings.site_name %>" />
 <% 
 # TODO feed for each topic
 %>
@@ -24,7 +25,7 @@
 
 
   <div id="head" class="mainSize">
-    <ul id="mainNav">
+    <div id="mainNav">
     <%= link_to 'About', about_url %>
 		<%= link_to 'Topics', topics_path %>
       <% unless logged_in? %>
@@ -34,7 +35,7 @@
       <%= link_to 'Logout', logout_url %>
       <%= link_to 'Admin', '/admin' %>
     <% end %>
-    </ul>
+    </div>
 		<%= link_to "Open Tables", topics_path, :id =>  "logo", :title => "back to home page"%>
   </div>
 

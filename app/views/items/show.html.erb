@@ -14,9 +14,7 @@
 	<% @item.topics.each do |topic| %>
 	<% end %>
 	
-	<% if logged_in? %>
-		  <%= render :partial => 'relevant_rejected' %>
-	<% end %>
+	<%= render :partial => 'relevant_rejected' %>
 </div>
 
 <div class="second">
