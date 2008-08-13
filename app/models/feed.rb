@@ -21,14 +21,9 @@ class Feed < ActiveRecord::Base
     content = ""
     content = item.description unless item.description.blank?
     content += item.content unless item.content.blank? or item.content == item.description
-    parsed_content = Hpricot.parse(content)
-    # removing feedburner garbage
-    parsed_content.search('/div.feedflare').remove
-    parsed_content.search('/img[@src.match/^http://feeds.feedburner.com/~r/]').remove
-
+  
     article = Article.create(
-  #        :author => item.author.name,
-      :body => parsed_content.to_s,
+      :body => content,
       :source => item.link,
       :published => true,
       :title => item.title,
