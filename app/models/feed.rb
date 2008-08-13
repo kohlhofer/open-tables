@@ -31,7 +31,8 @@ class Feed < ActiveRecord::Base
       :body => parsed_content.to_s,
       :source => item.link,
       :published => item.published,
-      :title => item.title
+      :title => item.title,
+      :feed => self
       )
     article.topic_ids << self.topic_id and article.save if self.topic_id
   end
@@ -42,7 +43,8 @@ class Feed < ActiveRecord::Base
       :body => item.description,
       :source => item.link,
       :published => true,
-      :title => item.title
+      :title => item.title,
+      :feed => self
       )
     weblink.topic_ids << self.topic_id and weblink.save if self.topic_id
   end
