@@ -26,7 +26,7 @@ class Feed < ActiveRecord::Base
     parsed_content.search('/div.feedflare').remove
     parsed_content.search('/img[@src.match/^http://feeds.feedburner.com/~r/]').remove
 
-    article = self.articles.create(
+    article = Article.create(
   #        :author => item.author.name,
       :body => parsed_content.to_s,
       :source => item.link,
@@ -46,6 +46,7 @@ class Feed < ActiveRecord::Base
       :title => item.title,
       :feed => self
       )
+
     weblink.topic_ids << self.topic_id and weblink.save if self.topic_id
   end
 end
