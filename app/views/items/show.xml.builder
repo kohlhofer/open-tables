@@ -6,6 +6,7 @@ xml.tag! "graph" do
   end
   xml.tag! "items" do
     xml.item do
+      xml.id @item.id
       xml.tag! "type", @item.type
       xml.title(@item.title)
       # TODO xml.cdata!
@@ -15,6 +16,7 @@ xml.tag! "graph" do
       xml.tag! "source", @item.source
       xml.tag! "created_at", (@item.updated_at.rfc2822)
       xml.link(item_url(@item))
+      xml.tag! "relevant", @item.relevant?
     end
   end
   xml.tag! "tagEdges" do

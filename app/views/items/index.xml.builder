@@ -17,6 +17,7 @@ xml.tag! "graph" do
         xml.tag! "source", item.source
         xml.tag! "created_at", (item.updated_at.rfc2822)
         xml.link(item_url(item))
+        xml.tag! "relevant", item.relevant?
       end
     end
   end
