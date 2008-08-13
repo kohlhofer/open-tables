@@ -17,7 +17,7 @@ class Feed < ActiveRecord::Base
   end
   
   def create_article(item)
-    next if Article.find_by_source(item.link)
+    return if Article.find_by_source(item.link)
     content = ""
     content = item.description unless item.description.blank?
     content += item.content unless item.content.blank? or item.content == item.description
@@ -33,16 +33,17 @@ class Feed < ActiveRecord::Base
       :published => item.published,
       :title => item.title
       )
+    article.topic_ids << self.topic_id and article.save if self.topic_id
   end
   
   def create_weblink(item)
-    next if Weblink.find_by_source(item.link)
-    Weblink.create(
+    return if Weblink.find_by_source(item.link)
+    weblink = Weblink.create!(
       :body => item.description,
       :source => item.link,
       :published => true,
       :title => item.title
       )
-    
+    weblink.topic_ids << self.topic_id and weblink.save if self.topic_id
   end
 end
