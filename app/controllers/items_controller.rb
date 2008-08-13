@@ -21,13 +21,17 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml { @tags = @items.collect{|item| item.tags }.flatten.uniq }# index.xml.erb
+      format.xml do # index.xml.erb
+        @tags = @items.collect{|item| item.tags }.flatten.uniq 
+        @tags.concat(@topic.tags).uniq if @topic
+      end
     end
   end
 
   def show
     if !@topic and @item.topics and @item.topics.size == 1
-      redirect_to formatted_topic_item_url(@item.topics[0], @item, params[:format]) and return
+      redirect_to formatted_topic_item_url(@item.topics[0], @item, params[:format]) and return if params[:format]
+            redirect_to topic_item_url(@item.topics[0], @item) and return
     end
     @tags = @item.filtered_tags
     @tags += @topic.tags if @topic
