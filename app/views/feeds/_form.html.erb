@@ -15,6 +15,6 @@
 </label></p>
 
 <p><label>Topic: <br />
-  <%= f.select :topic, Topic.find(:all, :select => "id, title").collect{|t| [t.title, t.id]} %>
+  <%= f.select :topic_id, Topic.find(:all, :select => "id, title").collect{|t| [t.title, t.id]} %>
 </label></p>
 
