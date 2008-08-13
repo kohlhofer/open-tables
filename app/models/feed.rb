@@ -34,7 +34,7 @@ class Feed < ActiveRecord::Base
       :title => item.title,
       :feed => self
       )
-    article.topic << self.topic if self.topic
+    article.topics << self.topic if self.topic
   end
   
   def create_weblink(item)
@@ -47,6 +47,6 @@ class Feed < ActiveRecord::Base
       :feed => self
       )
 
-    weblink.topic << self.topic if self.topic
+    weblink.topics << self.topic if self.topic
   end
 end
