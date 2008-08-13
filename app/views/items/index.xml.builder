@@ -7,6 +7,7 @@ xml.tag! "graph" do
   xml.tag! "items" do
     for item in @items
       xml.item do
+        xml.id item.id
         xml.tag! "type", item.type
         xml.title(item.title)
         # TODO xml.cdata!
