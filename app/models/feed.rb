@@ -30,7 +30,7 @@ class Feed < ActiveRecord::Base
   #        :author => item.author.name,
       :body => parsed_content.to_s,
       :source => item.link,
-      :published => item.published,
+      :published => true,
       :title => item.title,
       :feed => self
       )
