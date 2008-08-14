@@ -11,7 +11,7 @@ class Feed < ActiveRecord::Base
   
   def refresh
     feed = FeedTools::Feed.open(self.url)
-    feed.items.each do |item|
+    feed.items.reverse.each do |item|
       send('create_%s' % self.factory, item)
     end
   end
@@ -21,20 +21,15 @@ class Feed < ActiveRecord::Base
     content = ""
     content = item.description unless item.description.blank?
     content += item.content unless item.content.blank? or item.content == item.description
-    parsed_content = Hpricot.parse(content)
-    # removing feedburner garbage
-    parsed_content.search('/div.feedflare').remove
-    parsed_content.search('/img[@src.match/^http://feeds.feedburner.com/~r/]').remove
-
-    article = self.articles.create(
-  #        :author => item.author.name,
-      :body => parsed_content.to_s,
+  
+    article = Article.create(
+      :body => content,
       :source => item.link,
-      :published => item.published,
+      :published => true,
       :title => item.title,
       :feed => self
       )
-    article.topic_ids << self.topic_id and article.save if self.topic_id
+    article.topics << self.topic if self.topic
   end
   
   def create_weblink(item)
@@ -46,6 +41,7 @@ class Feed < ActiveRecord::Base
       :title => item.title,
       :feed => self
       )
-    weblink.topic_ids << self.topic_id and weblink.save if self.topic_id
+
+    weblink.topics << self.topic if self.topic
   end
 end

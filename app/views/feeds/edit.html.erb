@@ -2,17 +2,9 @@
 
 <%= error_messages_for :feed %>
 
-<% form_for(@feed) do |f| %>
-  <p>
-    <b>Title</b><br />
-    <%= f.text_field :title %>
-  </p>
-
-  <p>
-    <b>Url</b><br />
-    <%= f.text_field :url %>
-  </p>
-
+<% form_for(@feed, :html => { :method => :put}) do |f| %>
+  
+  <%= render :partial => 'form', :locals => {:f => f} %>
   <p>
     <%= f.submit "Update" %>
   </p>
