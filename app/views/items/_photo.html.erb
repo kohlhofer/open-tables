@@ -1,4 +1,5 @@
 <div class="photo">
+	<a href="<%= item_url(item) %>">
 	<%= image_tag item.body, :alt => item.title %>
-	<%= link_to "Original", item.source, :class => "source" unless item.source.blank? %>
+	</a>
 </div>

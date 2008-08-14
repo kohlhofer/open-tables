@@ -3,8 +3,10 @@
   <%#= link_to_remote 'delete item', item_url(@item), :method => :delete, :confirm => 'Are you sure?' if logged_in? and current_user.admin? %>
 </div>
 
+
+<p class="itemTopic">This item belongs to: <%= link_to h(@topic.title), @topic if @topic %></p>
 <h1><%= @page_title = h(@item.title) %></h1>
-<p>This item belongs to <%= link_to h(@topic.title), @topic if @topic %></p>
+
 
 
 

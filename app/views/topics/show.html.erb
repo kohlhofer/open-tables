@@ -4,7 +4,7 @@
   <%= link_to 'New item', new_topic_item_url(@topic) %>
 </div>
 
-<h1><%= @page_title = h(@topic.title) %></h1>
+<h1>Current topic: <%= @page_title = h(@topic.title) %></h1>
 
 
 <p class="topicTags">Tags for this topic are <%= @topic.tags.join(', ') %></p>

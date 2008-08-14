@@ -17,13 +17,17 @@ div.item {
 	width: 200px;
 	overflow: hidden;
 	margin: 0px 1em 1em 0px;
-	border: 1px solid #DDD;
+	border: 2px solid #EEE;
 	 -webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 }
 
 div.item img {
 	border-width: 0px;
+}
+
+div.photo img {
+	width: 200px;
 }
 
 a.showAll {
@@ -43,6 +47,25 @@ a.showAll {
 .link p {
   margin: 0.5em;
   font-size: 1.2em;
+}
+
+.item:hover {
+  border: 2px solid #03A5D6;
+}
+
+p.itemTopic {
+  padding: 0.5em 1em;
+  margin: 0px 0px 2em 0px;
+  background-color: #a4d2eb;
+  	 -webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	font-size: 1.3em;
+}
+
+p.itemTopic a {
+  font-weight: bold;
+  color: #005888;
+  margin: 0px 0.5em;
 }
 
 #wrap {
@@ -114,8 +137,8 @@ h1 a.changeTopic {
 #quickSearch form {
   margin: 0px;
   padding:0.4em 0.5em;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
+	border-width: 0px;
+	background-color: #FFF;
 	border-width: 0px;
 }
 
@@ -153,7 +176,7 @@ a#logo {
   padding: 0px;
   width:220px;
   text-indent: -6000px;
-  background: transparent url(/images/logo.gif) no-repeat 20px top;
+  background: transparent url(/images/ot_white.jpg) no-repeat 10px 9px;
   }
  
 #mainNav {
