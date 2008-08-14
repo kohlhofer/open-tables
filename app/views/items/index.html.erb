@@ -41,7 +41,7 @@
 	<div class="overview">
 		<% @items.each do |item| %>
 		  <div class="item">
-		    <%= render :partial => '/items/' + item.type.to_s.downcase, :locals => {:item => item} %>
+		    <%= render :partial => '/items/topics/' + item.type.to_s.downcase, :locals => {:item => item} %>
 		  </div>
 		<% end %>
 	</div>
