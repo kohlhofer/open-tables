@@ -4,7 +4,7 @@
 		<%= @item.relevant? ? 'relevant' : link_to_function('relevant', 'toggle_relevant(this, "relevant", "%s");' % toggle_relevant_item_url(@item)) %>
 	</span>
   <span class="<%= 'set' if @item.rejected? %>">
-		<%= @item.rejected? ? 'rejected' : link_to_function('not relevant', 'toggle_relevant(this, "rejected", "%s");' % toggle_relevant_item_url(@item)) %>
+		<%= @item.rejected? ? 'rejected' : link_to_function('rejected', 'toggle_relevant(this, "rejected", "%s");' % toggle_relevant_item_url(@item)) %>
   </span>
 	<div class="clearThis"> </div>
 </div>

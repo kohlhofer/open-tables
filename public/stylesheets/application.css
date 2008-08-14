@@ -62,6 +62,14 @@ p.itemTopic {
 	font-size: 1.3em;
 }
 
+div.topicHeader {
+  padding: 0.5em 1em 0.3em 1em;
+  margin: 0px 0px 2em 0px;
+  background-color: #a4d2eb;
+  	 -webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+}
+
 p.itemTopic a {
   font-weight: bold;
   color: #005888;
@@ -131,15 +139,20 @@ h1 a.changeTopic {
 
 #quickSearch {
   float: right;
-  margin-left: 1em;
 }
 
 #quickSearch form {
   margin: 0px;
-  padding:0.4em 0.5em;
+  padding:0px 0.5em;
 	border-width: 0px;
-	background-color: #FFF;
+	background-color: transparent;
 	border-width: 0px;
+}
+
+
+
+#quickSearch form input {
+  margin: 0px;
 }
 
 
@@ -149,7 +162,7 @@ h1 a.changeTopic {
 }
 
 #topicNav a {
-  padding: 0.5em 1em;
+  padding: 0.2em 1em;
   float:right;
   font-size: 1em;
   font-weight: bold;
@@ -239,36 +252,34 @@ ul#topicList {
   list-style: none;
   margin: 0px;
   padding: 0px;
+  border-top: 3px solid #DDD;
 }
 
 ul#topicList li {
   padding: 0px;
+  border-bottom: 3px solid #DDD;
 }
 
 ul#topicList a {
 	display: block;
 	padding: 1em 0.5em;
 	text-decoration: none;
-	margin-left: -0.5em;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 }
 
 ul#topicList a:hover {
 	background-color: #dbe7ef;
-	
 }
 
 ul#topicList h2 {
 	font-size: 1.3em;
-	margin: 0px;
-	text-decoration: underline;
-}
+	margin: 0px;}
 
 
 ul#topicList p {
 	font-size: 1.1em;
-	margin: 0.5em 0px 0.5em 0.5em;
+	margin: 0.5em 0px 0.5em 0px;
 	color: #666;
 
 }
@@ -278,9 +289,7 @@ form select {
 	width: 15em;
 }
 
-form input[type="submit"] {
-	font-size: 1.4em;
-	}
+
 	
 	
 .topicTags {
@@ -439,4 +448,46 @@ fieldset {
   font-weight: bold;
   	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
+}
+
+
+
+
+#masterFilter {
+	height: 2em;
+	padding: 0px;
+	margin: 2.5em 0px 1em 0px;
+	font-size: 1.1em;
+}
+
+
+
+
+#masterFilter a {
+	border-bottom: 0px;
+	float: left;
+	height: 2em;
+	line-height: 2em;
+	margin: 0px 1px 0px 0px;
+	padding: 0px 1em;
+	text-decoration: none;
+	-moz-border-radius-topleft: 3px;
+	-webkit-border-top-left-radius: 3px;
+	-moz-border-radius-topright: 3px;
+	-webkit-border-top-right-radius: 3px;
+	background-color: #EEE;
+    color: #515961;
+}
+
+#masterFilter a.relevant {
+	font-weight: bold;
+	color: #333;
+}
+
+#masterFilter a.current {
+	background-color: #DDD;
+}
+
+#masterFilter a:hover {
+	text-decoration: underline;
 }
