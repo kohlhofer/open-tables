@@ -328,8 +328,19 @@ form select {
   list-style: none;
   margin: 0px;
   padding: 0px;
-  line-height: 1.5em;
+  line-height: 1.6em;
 }
+
+#tagFilter a.current {
+  font-weight: bold;
+  background-color: #666;
+  padding:0.2em 0.5em;
+  margin-left: -0.5em;
+  color: #FFF;
+    -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  text-decoration: none;
+  }
 
 #tagFilter h2 {
   margin-top: 0px;
