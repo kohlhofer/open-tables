@@ -12,7 +12,7 @@
 <p id="masterFilter">
 		<%= link_to "Relevant", { :controller => :items, :action => :index, :tags => tag_list_for_url("relevant"), :topic_id => @topic.id }, :class =>"relevant" %>
 	<%= link_to "Not relevant", { :controller => :items, :action => :index, :tags => tag_list_for_url("rejected"), :topic_id => @topic.id } %>
-	<a href="<%= url_for(@topic) %>">All items</a>
+	<a href="<%= url_for(@topic) %>" >All items</a>
 </p>
 
 <div class="second">
@@ -35,7 +35,7 @@
 	<div class="overview">
 		<% @topic.items.published.find(:all, :include => :tags).each do |item| %>
 		  <div class="item">
-		    <%= render :partial => '/items/' + item.type.to_s.downcase, :locals => {:item => item} %>
+		    <%= render :partial => '/items/topics/' + item.type.to_s.downcase, :locals => {:item => item} %>
 		  </div>
 		<% end %>
 	</div>

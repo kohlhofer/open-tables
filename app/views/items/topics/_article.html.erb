@@ -1,6 +1,7 @@
 
 <div class="article">
-	<h3><%= link_to item.title, item_url(item) %></h3>
-	<%= link_to h(item.title), item.source, :class => "source" unless item.source.blank? %>
+<a href="<%= item_url(item) %>">
+	<h3><%= item.title %></h3>
   <%= textilize(truncate(item.body, 500)) %>
+</a>
 </div>
