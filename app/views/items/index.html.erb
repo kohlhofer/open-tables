@@ -10,10 +10,9 @@
 
 <p class="topicTags">Tags for this topic are <%= @topic.tags.join(', ') %></p>
 
-
-<p id="masterFilter" class="<%= rejected_or_relevant(params[:tags]) %>">
-	<%= link_to "Relevant", { :controller => :items, :action => :index, :tags => tag_list_for_url("relevant"), :topic_id => @topic.id }, :class =>"relevant" %>
-	<%= link_to "Rejected", { :controller => :items, :action => :index, :tags => tag_list_for_url("rejected"), :topic_id => @topic.id } %>
+<p id="masterFilter">
+	<%= link_to "Relevant", { :controller => :items, :action => :index, :tags => tag_list_for_url("relevant"), :topic_id => @topic.id }, :class =>"relevant", :class => tag_list.include?('relevant') ? 'current' : '' %>
+	<%= link_to "Rejected", { :controller => :items, :action => :index, :tags => tag_list_for_url("rejected"), :topic_id => @topic.id }, :class => tag_list.include?('rejected') ? 'current' : '' %>
 	<%= link_to 'All items', topic_items_url(@topic) %>
 </p>
 
@@ -25,7 +24,7 @@
 			<a href="<%= url_for(@topic) %>" class="showAll">Show all items</a>
 		</li>
 		<% tag_cloud @topic.items.tag_counts, %w(css1 css2 css3 css4) do |tag, css_class| %>
-		   <li><%= link_to tag.name, { :controller => :items, :action => :index, :tags => tag_list_for_url(tag.name), :topic_id => @topic.id }, :class => [css_class, ' ', tag_list.include?(tag.name) ? 'active' : ''] %></li>
+		   <li><%= link_to tag.name, { :controller => :items, :action => :index, :tags => tag_list_for_url(tag.name), :topic_id => @topic.id }, :class => [css_class, ' ', tag_list.include?(tag.name) ? 'current' : ''] %></li>
 		 <% end %>
 		</ul>
 	</div>

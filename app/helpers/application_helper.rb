@@ -5,8 +5,9 @@ module ApplicationHelper
   end
   
   def tag_list(tags = nil)
-    tags ||= params[:tags]
-    return tags[0].split(',')
+    tags = params[:tags][0] if tags.nil? and params[:tags]
+    return [] if tags.nil?
+    return tags.split(',') unless tags.is_a?(Array)
   end
   def rejected_or_relevant(tags = nil)
     tag_list(tags).each do |tag|
