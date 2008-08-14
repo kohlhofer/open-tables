@@ -1,4 +1,5 @@
 <div class="video">
-	<%= item.body %>
-	<%= link_to 'from %s' % item.source_short, item.source %>
+	<a href="<%= item_url(item) %>">
+		<%= item.title %>
+	</a>
 </div>
