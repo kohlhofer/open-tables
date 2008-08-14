@@ -10,8 +10,8 @@
 <p class="topicTags">Tags for this topic are <%= @topic.tags.join(', ') %></p>
 
 <p id="masterFilter">
-		<%= link_to "Relevant", { :controller => :items, :action => :index, :tags => "relevant", :topic_id => @topic.id }, :class =>"relevant" %>
-	<%= link_to "Not relevant", { :controller => :items, :action => :index, :tags => "rejected", :topic_id => @topic.id } %>
+		<%= link_to "Relevant", { :controller => :items, :action => :index, :tags => tag_list_for_url("relevant"), :topic_id => @topic.id }, :class =>"relevant" %>
+	<%= link_to "Not relevant", { :controller => :items, :action => :index, :tags => tag_list_for_url("rejected"), :topic_id => @topic.id } %>
 	<a href="<%= url_for(@topic) %>">All items</a>
 </p>
 
