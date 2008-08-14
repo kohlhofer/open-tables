@@ -1,10 +1,13 @@
+
+
+<p class="itemTopic">This item belongs to: <%= link_to h(@topic.title), @topic if @topic %></p>
+
 <div id="topicNav">
   <%= link_to 'Edit item', edit_item_url(@item) if logged_in? and current_user.admin? %>
   <%#= link_to_remote 'delete item', item_url(@item), :method => :delete, :confirm => 'Are you sure?' if logged_in? and current_user.admin? %>
 </div>
 
 
-<p class="itemTopic">This item belongs to: <%= link_to h(@topic.title), @topic if @topic %></p>
 <h1><%= @page_title = h(@item.title) %></h1>
 
 
