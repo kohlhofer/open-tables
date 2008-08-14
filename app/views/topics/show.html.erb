@@ -12,7 +12,11 @@
 <div class="second">
 	<div id="tagFilter">
 		<h2>Filter this topic by tag:</h2>
-		<ul><% tag_cloud @topic.items.tag_counts, %w(css1 css2 css3 css4) do |tag, css_class| %>
+		<ul>
+		<li>
+			<a href="<%= url_for(@topic) %>" class="showAll">Show all items</a>
+		</li>
+		<% tag_cloud @topic.items.tag_counts, %w(css1 css2 css3 css4) do |tag, css_class| %>
 		   <li><%= link_to tag.name, { :controller => :items, :action => :index, :tags => tag.name, :topic_id => @topic.id }, :class => css_class %></li>
 		 <% end %>
 		</ul>
@@ -20,12 +24,13 @@
 </div>
 
 <div class="main">
-	<% @topic.items.published.find(:all, :include => :tags).each do |item| %>
-	  <div class="item">
-	    <h3><%= link_to item.title, item_url(item) %></h3>
-	    <%= render :partial => '/items/' + item.type.to_s.downcase, :locals => {:item => item} %>
-	  </div>
-	<% end %>
+	<div class="overview">
+		<% @topic.items.published.find(:all, :include => :tags).each do |item| %>
+		  <div class="item">
+		    <%= render :partial => '/items/' + item.type.to_s.downcase, :locals => {:item => item} %>
+		  </div>
+		<% end %>
+	</div>
 </div>
 
 <div class="clearThis"> </div>
