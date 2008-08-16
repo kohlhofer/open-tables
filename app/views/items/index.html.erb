@@ -1,4 +1,3 @@
-
 <div id="topicNav">
   <%= render :partial => '/items/search' %>
   <%= link_to 'Edit topic', edit_topic_url(@topic) if logged_in? and current_user.admin? %>
@@ -46,8 +45,3 @@
 		<% end %>
 	</div>
 </div>
-
-
-
-
-<div class="clearThis"> </div>
