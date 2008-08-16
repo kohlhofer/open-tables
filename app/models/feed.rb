@@ -45,4 +45,12 @@ class Feed < ActiveRecord::Base
 
     weblink.topics << self.topic if self.topic
   end
+  
+  def create_flickr(item)
+    return if Photo.find_by_source(item.link)
+    photo = Photo.create!(
+      :title => item.title,
+      :source => item.link,
+      :body => item.media_thumbnail_link)
+  end
 end

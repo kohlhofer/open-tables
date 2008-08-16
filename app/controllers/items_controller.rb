@@ -45,8 +45,8 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = @topic.items.new
-    @item.topics << @topic
+    @item = Item.new
+    @item.topics << @topic if @topic
 
     respond_to do |format|
       format.html # new.html.erb
