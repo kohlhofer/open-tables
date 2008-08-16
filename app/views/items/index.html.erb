@@ -10,9 +10,9 @@
 <p class="topicTags">Tags for this topic are <%= @topic.tags.join(', ') %></p>
 
 <p id="masterFilter">
-	<%= link_to "Relevant", { :controller => :items, :action => :index, :tags => tag_list_for_url("relevant"), :topic_id => @topic.id }, :class =>"relevant", :class => tag_list.include?('relevant') ? 'current' : '' %>
+	<%= link_to "Relevant", { :controller => :items, :action => :index, :tags => tag_list_for_url("relevant"), :topic_id => @topic.id }, :class => tag_list.include?('relevant') ? 'current' : '' %>
 	<%= link_to "Rejected", { :controller => :items, :action => :index, :tags => tag_list_for_url("rejected"), :topic_id => @topic.id }, :class => tag_list.include?('rejected') ? 'current' : '' %>
-	<%= link_to 'All items', topic_items_url(@topic), :class =>  (tag_list.include?('relevant') and tag_list.include?('rejected')) ? 'current' : '' %>
+	<%= link_to 'All items', topic_items_url(@topic), :class =>  (tag_list.include?('relevant') or tag_list.include?('rejected')) ? '' : 'current' %>
 </p>
 
 <div class="second">
