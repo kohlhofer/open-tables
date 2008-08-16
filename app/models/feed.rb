@@ -39,7 +39,8 @@ class Feed < ActiveRecord::Base
       :source => item.link,
       :published => true,
       :title => item.title,
-      :feed => self
+      :feed => self,
+      :tag_list => item.categories.collect{|c| c.term }.join(',')
       )
 
     weblink.topics << self.topic if self.topic
