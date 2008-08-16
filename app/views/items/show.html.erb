@@ -13,6 +13,9 @@
 	<% end %>
 	
 	<%= render :partial => 'relevant_rejected' %>
+	
+	<%= link_to 'previous', item_url(@item.previous), :class => "previous" %>
+	<%= link_to 'next', item_url(@item.next), :class => "next" %>
 </div>
 
 <div class="second">
