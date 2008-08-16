@@ -59,7 +59,7 @@ class TopicsController < ApplicationController
   end
 
   def destroy
-    @topic.destroy
+    @topic.update_attribute(:active => false)
 
     respond_to do |format|
       flash[:notice] = 'Topic was destroyed'

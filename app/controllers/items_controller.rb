@@ -143,6 +143,6 @@ class ItemsController < ApplicationController
 
   def current_topic
     return unless params[:topic_id]
-    @topic = Topic.find(params[:topic_id])
+    @topic = Topic.active.find(params[:topic_id])
   end
 end
