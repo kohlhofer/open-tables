@@ -14,6 +14,10 @@
   <%= f.select :factory, FEED_TYPES %>
 </label></p>
 
+<p><%= f.label :tag_list, 'Tags (e.g. "garden,green,bauhaus")' %>
+  <%= f.text_field :tag_list %>
+</p>
+
 <p><label>Topic: <br />
   <%= f.select :topic_id, Topic.find(:all, :select => "id, title").collect{|t| [t.title, t.id]}, :include_blank => true %>
 </label></p>

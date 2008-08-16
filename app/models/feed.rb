@@ -8,6 +8,7 @@ class Feed < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :url
   belongs_to :user
+  acts_as_taggable
   
   def refresh
     feed = FeedTools::Feed.open(self.url)
@@ -27,6 +28,7 @@ class Feed < ActiveRecord::Base
       :source => item.link,
       :published => true,
       :title => item.title,
+      :tag_list => item.categories ? item.categories.collect{|c| c.term }.join(',') : self.tag_list,
       :feed => self
       )
     article.topics << self.topic if self.topic
@@ -39,10 +41,9 @@ class Feed < ActiveRecord::Base
       :source => item.link,
       :published => true,
       :title => item.title,
-      :feed => self,
-      :tag_list => item.categories.collect{|c| c.term }.join(',')
+      :tag_list => item.categories ? item.categories.collect{|c| c.term }.join(',') : self.tag_list,
+      :feed => self
       )
-
     weblink.topics << self.topic if self.topic
   end
   
@@ -51,6 +52,22 @@ class Feed < ActiveRecord::Base
     photo = Photo.create!(
       :title => item.title,
       :source => item.link,
-      :body => item.media_thumbnail_link)
+      :published => true,
+      :body => item.media_thumbnail_link,
+      :tag_list => item.categories ? item.categories.collect{|c| c.term }.join(',') : self.tag_list,
+      :feed => self)
+    photo.topics << self.topic if self.topic
+  end
+  
+  def create_youtube(item)
+    return if Video.find_by_source(item.link)
+    video = Video.create!(
+      :title => item.title,
+      :source => item.link,
+      :body => item.description,
+      :published => true,
+      :tag_list => item.categories ? item.categories.collect{|c| c.term }.join(',') : self.tag_list,
+      :feed => self)
+    video.topics << self.topic if self.topic
   end
 end
