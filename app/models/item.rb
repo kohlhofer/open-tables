@@ -13,6 +13,10 @@ class Item < ActiveRecord::Base
     self.class.published.find(:first, :conditions => ['id < ?', self.id], :order => 'id DESC', :limit => 1)
   end
 
+  def preview_url
+    false
+  end
+
   def source_short
     self.source.gsub(/https?:\/\//, '').gsub(/\/$/, '')
   end

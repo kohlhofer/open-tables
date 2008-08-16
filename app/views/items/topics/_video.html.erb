@@ -1,4 +1,4 @@
 <div class="video">
-	<%= item.body %>
+	<%= item.preview_url ? image_tag(item.preview_url) : item.body %>
 	<%= link_to 'from %s' % item.source_short, item.source %>
 </div>
