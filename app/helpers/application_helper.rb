@@ -25,9 +25,12 @@ module ApplicationHelper
       if ['rejected', 'relevant'].include?(new_tag)
         puts new_tag.inspect
         tags.reject!{|t| ['rejected', 'relevant'].include?(t.to_s) }
-        puts y tags
       end
-      tags << new_tag if new_tag
+      if tags.include?(new_tag)
+        tags.delete(new_tag)
+      else
+        tags << new_tag if new_tag
+      end
       return tags.uniq.join(',')
     else
       new_tag
