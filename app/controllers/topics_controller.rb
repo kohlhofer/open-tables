@@ -14,17 +14,7 @@ class TopicsController < ApplicationController
   end
 
   def show
-    if params[:tags]
-      params[:tags] = params[:tags].split(',') unless params[:tags].is_a?(Array)
-    end
-    unless @topic.active?
-      flash[:error] = "Topic not active" 
-      redirect_to :action => :index and return
-    end
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @topic }
-    end
+    redirect_to :controller => 'items', :topic_id => params[:id] and return
   end
 
   def new
