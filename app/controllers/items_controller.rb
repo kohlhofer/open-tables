@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
 
   def index
     per_page = 20
-    per_page = 9 if request.format == :html
+    per_page = 15 if request.format == :html
     if params[:tags]
 #      params[:tags] = params[:tags][0].split(',') unless params[:tags].is_a?(Array)
       if @topic
