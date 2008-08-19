@@ -28,8 +28,8 @@ class Feed < ActiveRecord::Base
       :source => item.link,
       :published => true,
       :title => item.title,
-      :tag_list => item.categories ? item.categories.collect{|c| c.term }.join(',') : self.tag_list,
-      :feed => self
+      :tag_list => get_tag_list(item),
+      :feed_id => id
       )
     article.topics << self.topic if self.topic
   end
@@ -41,8 +41,8 @@ class Feed < ActiveRecord::Base
       :source => item.link,
       :published => true,
       :title => item.title,
-      :tag_list => item.categories ? item.categories.collect{|c| c.term }.join(',') : self.tag_list,
-      :feed => self
+      :tag_list => get_tag_list(item),
+      :feed_id => id
       )
     weblink.topics << self.topic if self.topic
   end
@@ -53,9 +53,9 @@ class Feed < ActiveRecord::Base
       :title => item.title,
       :source => item.link,
       :published => true,
-      :body => item.media_thumbnail_link,
-      :tag_list => item.categories ? item.categories.collect{|c| c.term }.join(',') : self.tag_list,
-      :feed => self)
+      :body => item.media_thumbnail_link.gsub(/_s\.jpg/, '.jpg'),
+      :tag_list => get_tag_list(item),
+      :feed_id => id)
     photo.topics << self.topic if self.topic
   end
   
@@ -66,8 +66,13 @@ class Feed < ActiveRecord::Base
       :source => item.link,
       :body => item.description,
       :published => true,
-      :tag_list => item.categories ? item.categories.collect{|c| c.term }.join(',') : self.tag_list,
-      :feed => self)
+      :tag_list => get_tag_list(item),
+      :feed_id => id)
     video.topics << self.topic if self.topic
+  end
+  
+  def get_tag_list(item)
+    return self.tag_list unless item.categories
+    item.categories.collect{|c| c.term.split(' ') }.join(',')
   end
 end
