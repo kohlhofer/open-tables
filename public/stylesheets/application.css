@@ -57,6 +57,10 @@ a.showAll {
   margin-right: 1em;
 }
 
+.item .video p {
+  margin: 1em;
+}
+
 .article h3 {
   font-size: 1em;
   margin: 0.5em 0px;
