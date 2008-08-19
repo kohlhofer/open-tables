@@ -15,6 +15,7 @@ xml.tag! "graph" do
           xml.cdata! ( render(:file => "items/_" + item.type.to_s.downcase + ".html.erb", :locals => {:item => item }))
         end
         xml.tag! "source", item.source
+        xml.tag! "preview", item.preview_url if item.preview_url
         xml.tag! "created_at", (item.updated_at.rfc2822)
         xml.link(item_url(item))
         xml.tag! "relevant", item.relevant?

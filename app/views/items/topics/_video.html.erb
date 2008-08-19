@@ -1,5 +1,6 @@
 <div class="video">
-	<a href="<%= item_url(item) %>">
-		<%= item.title %>
-	</a>
+	<%= item.preview_url ? image_tag(item.preview_url) : "" %>
+	<p><%= link_to item.title, item.source %></p>
+	<p>No preview available</p>
+
 </div>

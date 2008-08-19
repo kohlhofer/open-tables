@@ -6,17 +6,19 @@ class ItemsController < ApplicationController
   helper :tags
 
   def index
+    per_page = 20
+    per_page = 9 if request.format == :html
     if params[:tags]
 #      params[:tags] = params[:tags][0].split(',') unless params[:tags].is_a?(Array)
       if @topic
-        @items = @topic.items.published.find_tagged_with(params[:tags].join(','), :match_all => true).paginate(:per_page => 20, :page => params[:page])
+        @items = @topic.items.published.find_tagged_with(params[:tags].join(','), :match_all => true).paginate(:per_page => per_page, :page => params[:page])
       else
-        @items = Item.published.find_tagged_with(params[:tags], :match_all => true).paginate(:per_page => 20, :page => params[:page])
+        @items = Item.published.find_tagged_with(params[:tags], :match_all => true).paginate(:per_page => per_page, :page => params[:page])
       end
-    elsif params[:topic_id].blank?
-      @items = Item.published.paginate(:per_page => 20, :page => params[:page])
+    elsif @topic
+      @items = @topic.items.published.paginate(:per_page => per_page, :page => params[:page])
     else
-      @items = @topic.items.published.paginate(:per_page => 20, :page => params[:page])
+      @items = Item.published.paginate(:per_page => per_page, :page => params[:page])
     end
 
     respond_to do |format|
@@ -43,8 +45,8 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = @topic.items.new
-    @item.topics << @topic
+    @item = Item.new
+    @item.topics << @topic if @topic
 
     respond_to do |format|
       format.html # new.html.erb
@@ -141,6 +143,6 @@ class ItemsController < ApplicationController
 
   def current_topic
     return unless params[:topic_id]
-    @topic = Topic.find(params[:topic_id])
+    @topic = Topic.active.find(params[:topic_id])
   end
 end

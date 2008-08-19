@@ -1,19 +1,24 @@
-
+<%
+  @page_title = 'items' 
+  @page_title += ' for %s' % [params[:tags]].join(', ') if params[:tags]
+  @page_title += ' in %s' % @topic.title if @topic
+%>
 <div id="topicNav">
   <%= render :partial => '/items/search' %>
   <%= link_to 'Edit topic', edit_topic_url(@topic) if logged_in? and current_user.admin? %>
+  <%= link_to_remote 'Delete topic', :url => topic_url(@topic), :method => :delete, :confirm => 'Are you sure?' if @topic and logged_in? and current_user.admin? %>
   <%= link_to 'New item', new_topic_item_url(@topic) %>
 </div>
-
-<h1>Current topic: <%= @page_title = h(@topic.title) %></h1>
-
+<% if @topic %>
+<h1>Current topic: <%= h(@topic.title) %></h1>
 
 <p class="topicTags">Tags for this topic are <%= @topic.tags.join(', ') %></p>
+<% end %>
 
 <p id="masterFilter">
-	<%= link_to "Relevant", { :controller => :items, :action => :index, :tags => tag_list_for_url("relevant"), :topic_id => @topic.id }, :class =>"relevant", :class => tag_list.include?('relevant') ? 'current' : '' %>
-	<%= link_to "Rejected", { :controller => :items, :action => :index, :tags => tag_list_for_url("rejected"), :topic_id => @topic.id }, :class => tag_list.include?('rejected') ? 'current' : '' %>
-	<%= link_to 'All items', topic_items_url(@topic), :class =>  (tag_list.include?('relevant') and tag_list.include?('rejected')) ? 'current' : '' %>
+	<%= link_to "Relevant", { :controller => :items, :action => :index, :tags => tag_list_for_url("relevant"), :topic_id => params[:topic_id] }, :class => tag_list.include?('relevant') ? 'current' : '' %>
+	<%= link_to "Rejected", { :controller => :items, :action => :index, :tags => tag_list_for_url("rejected"), :topic_id => params[:topic_id] }, :class => tag_list.include?('rejected') ? 'current' : '' %>
+	<%= link_to 'All items', topic_items_url(@topic), :class =>  (tag_list.include?('relevant') or tag_list.include?('rejected')) ? '' : 'current' %>
 </p>
 
 <div class="second">
@@ -21,21 +26,14 @@
 		<h2>Filter this topic by tag:</h2>
 		<ul>
 		<li>
-			<a href="<%= url_for(@topic) %>" class="showAll">Show all items</a>
+		  <%= link_to 'Show all items', @topic ? topic_items_url(@topic) : items_url, :class => 'showAll' %>
 		</li>
-		<% tag_cloud @topic.items.tag_counts, %w(css1 css2 css3 css4) do |tag, css_class| %>
+		<% @topic.nil? ? '' : tag_cloud(@topic.items.tag_counts, %w(css1 css2 css3 css4)) do |tag, css_class| %>
 		   <li><%= link_to tag.name, { :controller => :items, :action => :index, :tags => tag_list_for_url(tag.name), :topic_id => @topic.id }, :class => [css_class, ' ', tag_list.include?(tag.name) ? 'current' : ''] %></li>
 		 <% end %>
 		</ul>
 	</div>
 </div>
-
-<%
-  @page_title = 'items' 
-  @page_title += ' for %s' % [params[:tags]].join(', ') if params[:tags]
-  @page_title += ' in %s' % @topic.title if @topic
-%>
-
 
 <div class="main">
 	<div class="overview">
@@ -45,9 +43,6 @@
 		  </div>
 		<% end %>
 	</div>
+	<div class="clearThis"></div>
+	<%= will_paginate(@items) %>
 </div>
-
-
-
-
-<div class="clearThis"> </div>

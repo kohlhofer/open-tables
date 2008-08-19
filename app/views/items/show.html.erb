@@ -1,18 +1,11 @@
-
-
 <p class="itemTopic">This item belongs to: <%= link_to h(@topic.title), @topic if @topic %></p>
 
 <div id="topicNav">
   <%= link_to 'Edit item', edit_item_url(@item) if logged_in? and current_user.admin? %>
-  <%#= link_to_remote 'delete item', item_url(@item), :method => :delete, :confirm => 'Are you sure?' if logged_in? and current_user.admin? %>
+  <%= link_to_remote 'Delete item', :url => item_url(@item), :method => :delete, :confirm => 'Are you sure?' if logged_in? and current_user.admin? %>
 </div>
 
-
 <h1><%= @page_title = h(@item.title) %></h1>
-
-
-
-
 
 <div class="main">
 	<%= render :partial => @item.type.to_s.downcase, :locals => {:item => @item } %>
@@ -20,6 +13,9 @@
 	<% end %>
 	
 	<%= render :partial => 'relevant_rejected' %>
+	
+	<%= link_to 'previous', item_url(@item.previous), :class => "previous" %>
+	<%= link_to 'next', item_url(@item.next), :class => "next" %>
 </div>
 
 <div class="second">
@@ -32,6 +28,3 @@
 	  <%= submit_tag 'add tag', :name => nil %>
 	<% end -%>
 </div>
-
-
-<div class="clearThis"> </div>

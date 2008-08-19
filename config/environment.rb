@@ -69,6 +69,6 @@ end
 
 ITEM_TYPES = ['Article', 'Photo', 'Video', 'Weblink']
 
-FEED_TYPES = ['article', 'weblink']
+FEED_TYPES = ['article', 'weblink', 'flickr', 'youtube']
 FEEDME_VERSION = '0.2-tk'
 
