@@ -12,6 +12,9 @@
 			<a href="<%= url_for(topic) %>">
 		  	<h2><%= topic.title %></h2>
 		  	<div><%= textilize(topic.description) %></div>
+		  	<div class="item">
+		  	  <%= render :partial => '/items/topics/' + topic.items.first.type.to_s.downcase, :locals => {:item => topic.items.first} if topic.items.first %>
+		  	</div>
 			</a>
 		</li>
 	<% end %>
