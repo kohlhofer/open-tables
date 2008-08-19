@@ -61,6 +61,8 @@ a.showAll {
   margin: 1em;
 }
 
+
+
 .article h3 {
   font-size: 1em;
   margin: 0.5em 0px;
@@ -525,3 +527,30 @@ fieldset {
 #masterFilter a:hover {
 	text-decoration: underline;
 }
+
+div.prevNext {
+	width: 80%;
+	text-align: center;
+	padding-top: 2em;
+}
+
+a.previous {
+	border-right: 1px solid #CCC;
+}
+
+a.next {
+	padding-left: 0.5em;
+}
+
+a.previous, a.next {
+  font-size: 1.2em;
+  color: #666;
+  padding: 0.3em 1em;
+}
+
+
+a.previous:hover, a.next:hover {
+  color: #03A5D6;
+}
+
+
