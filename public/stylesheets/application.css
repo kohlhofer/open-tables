@@ -529,23 +529,22 @@ fieldset {
 }
 
 div.prevNext {
-	width: 80%;
-	text-align: center;
-	padding-top: 2em;
+	background-color: #EEE;
+	padding: 0.5em 1em;
+	margin-bottom: 2em;
 }
 
 a.previous {
-	border-right: 1px solid #CCC;
+	float:left
 }
 
 a.next {
-	padding-left: 0.5em;
+	float: right;
 }
 
 a.previous, a.next {
-  font-size: 1.2em;
+  font-size: 1em;
   color: #666;
-  padding: 0.3em 1em;
 }
 
 
