@@ -48,7 +48,7 @@ class TopicsController < ApplicationController
     respond_to do |format|
       if @topic.update_attributes(params[:topic])
         flash[:notice] = 'Topic was successfully updated.'
-        format.html { render :action => "show" and return }
+        format.html { redirect_to topic_url(@topic) and return }
         format.xml  { head :ok }
       else
         flash[:error] = 'Topic couldn\'t be updated.'
@@ -59,7 +59,7 @@ class TopicsController < ApplicationController
   end
 
   def destroy
-    @topic.update_attribute(:active => false)
+    @topic.update_attribute(:active, false)
 
     respond_to do |format|
       flash[:notice] = 'Topic was destroyed'

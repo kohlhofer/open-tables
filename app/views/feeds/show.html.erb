@@ -9,7 +9,7 @@
 </ul>
 
 <% @feed.items.each do |item| %>
-  <%= render :partial => '/items/%s' % @feed.factory, :locals => {:item => item} %>
+  <%= render :partial => '/items/%s' % item.type.to_s.downcase, :locals => {:item => item} %>
 <% end %>
 
 <%= link_to 'Ping', :controller => :feeds, :action => :ping, :url => @feed.url %> |
