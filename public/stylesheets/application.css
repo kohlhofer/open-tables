@@ -276,20 +276,18 @@ ul#topicList {
   list-style: none;
   margin: 0px;
   padding: 0px;
-  border-top: 3px solid #DDD;
+
 }
 
 ul#topicList li {
-  padding: 0px;
-  border-bottom: 3px solid #DDD;
+  clear: right;
+  padding: 1em 0px 2em 0px;
+  border-top: 2px solid #EEE;
 }
 
 ul#topicList a {
-	display: block;
-	padding: 1em 0.5em;
-	text-decoration: none;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
+  text-decoration: none;
+
 }
 
 ul#topicList a:hover {
@@ -307,6 +305,19 @@ ul#topicList p {
 	color: #666;
 
 }
+
+#topicList div.item {
+  float: right;
+  margin: 0px 0px 1em 1em;
+}
+
+
+
+
+
+
+
+
 
 form select {
 	font-size: 1.1em;
