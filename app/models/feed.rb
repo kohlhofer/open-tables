@@ -36,11 +36,11 @@ class Feed < ActiveRecord::Base
   
   def create_weblink(item)
     return if Weblink.find_by_source(item.link)
-    weblink = Weblink.create!(
+    weblink = Weblink.create(
       :body => item.description,
       :source => item.link,
       :published => true,
-      :title => item.title,
+      :title => item.title || 'untitled',
       :tag_list => get_tag_list(item),
       :feed_id => id
       )
@@ -49,8 +49,8 @@ class Feed < ActiveRecord::Base
   
   def create_flickr(item)
     return if Photo.find_by_source(item.link)
-    photo = Photo.create!(
-      :title => item.title,
+    photo = Photo.create(
+      :title => item.title || 'untitled',
       :source => item.link,
       :published => true,
       :body => item.media_thumbnail_link.gsub(/_s\.jpg/, '.jpg'),
@@ -61,8 +61,8 @@ class Feed < ActiveRecord::Base
   
   def create_youtube(item)
     return if Video.find_by_source(item.link)
-    video = Video.create!(
-      :title => item.title,
+    video = Video.create(
+      :title => item.title || 'untitled',
       :source => item.link,
       :body => item.description,
       :published => true,
