@@ -9,10 +9,13 @@
 	<ul id="topicList">
 	<% @topics.each do |topic| %>
 		<li>
-			<a href="<%= url_for(topic) %>">
-		  	<h2><%= topic.title %></h2>
+				<div class="item">
+		  	  <%= render :partial => '/items/topics/' + topic.items.first.type.to_s.downcase, :locals => {:item => topic.items.first} if topic.items.first %>
+		  	</div>
+		  	<h2><a href="<%= url_for(topic) %>"><%= topic.title %></a></h2>
 		  	<div><%= textilize(topic.description) %></div>
-			</a>
+		  	<div class="clearThis"> </div>
+			
 		</li>
 	<% end %>
 	</ul>
