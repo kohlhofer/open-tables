@@ -1,4 +1,9 @@
 <div class="video">
 	<%= item.body %>
-	<%= link_to 'from %s' % item.source_short, item.source %>
+
+<% if item.source.match(/youtube/) %>
+<object width="425" height="344"><param name="movie" value="<%= item.video_url %>"></param><param name="allowFullScreen" value="true"></param><embed src="<%= item.video_url %>" type="application/x-shockwave-flash" allowfullscreen="true" width="425" height="344"></embed></object>
+<% end %>
+
+<%= link_to 'from %s' % item.source_short, item.source, :class => 'source' %>
 </div>
