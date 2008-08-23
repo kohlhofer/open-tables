@@ -1,4 +1,4 @@
-<p class="itemTopic">This item belongs to: <%= link_to h(@topic.title), @topic if @topic %></p>
+<p class="itemTopic">This <%= @item.type.to_s.downcase %> belongs to: <%= link_to h(@topic.title), @topic if @topic %></p>
 
 <div id="topicNav">
   <%= link_to 'Edit item', edit_item_url(@item) if logged_in? and current_user.admin? %>
@@ -9,13 +9,10 @@
 
 <div class="main">
 	<%= render :partial => @item.type.to_s.downcase, :locals => {:item => @item } %>
-	<% @item.topics.each do |topic| %>
-	<% end %>
+	
+<div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/opentables-web/embed.js"></script><noscript><a href="http://opentables-web.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
 	
 	<%= render :partial => 'relevant_rejected' %>
-	
-
-	
 	
 </div>
 
