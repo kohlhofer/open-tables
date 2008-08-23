@@ -6,4 +6,11 @@ class Video < Item
     end
     return false
   end
+  
+  def video_url
+    if self.source.match(/youtube/)
+      return self.source.gsub(/watch\?v=/, 'v/')
+    end
+    return self.source
+  end
 end
