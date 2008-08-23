@@ -1,7 +1,7 @@
 
 <div class="article">
 <a href="<%= item_url(item) %>">
-	<h3><%= item.title %></h3>
-  <%= textilize(truncate(item.body, 500)) %>
+	<h3><%= strip_tags(item.title) %></h3>
+  <%= truncate(strip_tags(item.body), 500) %>
 </a>
 </div>
