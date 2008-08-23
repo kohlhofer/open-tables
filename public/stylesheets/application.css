@@ -29,7 +29,7 @@ div.photo img {
 
 
 
-.item div.photo img {
+.item div.photo img, .item div.video img {
 	width: 200px;
 }
 
