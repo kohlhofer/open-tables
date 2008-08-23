@@ -28,7 +28,7 @@
 		<li>
 		  <%= link_to 'Show all items', @topic ? topic_items_url(@topic) : items_url, :class => 'showAll' %>
 		</li>
-		<% @topic.nil? ? '' : tag_cloud(@topic.items.tag_counts, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+		<% @topic.nil? ? '' : tag_cloud(@topic.items.tag_counts(:limit => 35, :order => 'count DESC').reject{|t| %w(rejected relevant).include?(t.name)}, %w(css1 css2 css3 css4)) do |tag, css_class| %>
 		   <li><%= link_to tag.name, { :controller => :items, :action => :index, :tags => tag_list_for_url(tag.name), :topic_id => @topic.id }, :class => [css_class, ' ', tag_list.include?(tag.name) ? 'current' : ''] %></li>
 		 <% end %>
 		</ul>
