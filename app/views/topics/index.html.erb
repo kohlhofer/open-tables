@@ -1,7 +1,30 @@
 <div class="second">
-	<h2>About Open Tables</h2>
-	<p>Open Tables Ecology is a study in contemporary interaction theory, or Ubiquitous Computing.</p>
-	<p><%= link_to 'Learn more', about_url %></p>
+	<div class="info">
+		<h2>About Open Tables</h2>
+		<p>OT is a new way to engage with information on the web, in an enjoyable and collaborative way.</p>
+		<p>To get the full experience, please participate physically live at the <a href="http://www.tentlondon.co.uk/">Tent</a> design expo at the Truman Brewery from 18th - 21st Sept. For further information and to find out when and where future installations will be, please check out our <a href="http://blog.opntables.org">blog</a>.</p>
+		<p><%= link_to 'Learn more', about_url %></p>
+	</div>
+	
+	
+
+	
+	<div id="subscribe">
+		<h2>Subscribe (RSS)</h2>
+		<p><a href="http://feeds.feedburner.com/opentables_items" class="rss">All items</a></p>
+		<p><a href="http://feeds.feedburner.com/opentables_comments" class="rss">Latest Comments</a></p>
+	</div>
+	
+	<div id="newsletter">
+		<h2>Newsletter</h2>
+		<form action="http://opentables.cmail1.com/s/403419/" method="post">
+
+		<span class="label"><label for="l403419-403419">Enter your email</label></span> 
+		<span><input type="text" name="cm-403419-403419" id="l403419-403419" size="25" /></span> 
+		<input type="submit" value="Subscribe" />
+		</form>
+	</div>
+	
 </div>
 
 <div class="main">
@@ -12,8 +35,10 @@
 				<div class="item">
 		  	  <%= render :partial => '/items/topics/' + topic.items.first.type.to_s.downcase, :locals => {:item => topic.items.first} if topic.items.first %>
 		  	</div>
-		  	<h2><a href="<%= url_for(topic) %>"><%= topic.title %></a></h2>
+				<a href="<%= url_for(topic) %>" class="topicLink">
+		  	<h2><%= topic.title %></h2>
 		  	<div><%= textilize(topic.description) %></div>
+				</a>
 		  	<div class="clearThis"> </div>
 			
 		</li>

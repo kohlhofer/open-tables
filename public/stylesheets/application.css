@@ -22,6 +22,48 @@ div.item {
 	-moz-border-radius: 3px;
 }
 
+#topicList div.item {
+	height: 110px;
+	width: 150px;
+	overflow: hidden;
+  float: right;
+  margin: 1em 1em 1em 1em;
+	border: 2px solid #EEE;
+	 -webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	background-color: #FFF;
+}
+
+
+#newsletter {
+	margin-top: 2em;  
+}
+
+
+#newsletter h2 {
+	font-size: 1em;
+	margin-bottom: 0.5em;
+}
+
+#subscribe {
+	margin-top: 3em;  
+}
+
+
+#subscribe h2 {
+	font-size: 1em;
+	margin-bottom: 0.5em;
+}
+
+.rss {
+    background: transparent url(/images/feed.gif) no-repeat left top;
+    padding-left: 20px; 
+}
+
+#l403419-403419 {
+  width: 80%;
+}
+
 div.photo img {
 	border-width: 0px;
 	width: 500px;
@@ -123,6 +165,10 @@ p.itemTopic a {
   padding: 0px;
   float: right;
   margin-left: 2%;
+}
+
+.info p {
+  line-height: 1.4em;
 }
 
 .clearThis {
@@ -246,6 +292,8 @@ form {
   background-color: #d7e9f1;
   padding: 0.5em 1em;
   border: 1px solid #c1d1d8;
+      	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
 }
   
 form p {
@@ -281,17 +329,20 @@ ul#topicList {
 
 ul#topicList li {
   clear: right;
-  padding: 1em 0px 2em 0px;
-  border-top: 2px solid #EEE;
+  padding: 0px 0px 0px 0px;
+  border-top: 1px solid #DDD;
 }
 
-ul#topicList a {
-  text-decoration: none;
-
+ul#topicList a.topicLink {
+text-decoration: none;
+display: block;
+padding-bottom: 1em;
+min-height: 120px;
+padding: 1em 0px;
 }
 
-ul#topicList a:hover {
-	background-color: #dbe7ef;
+ul#topicList a.topicLink:hover {
+	background-color: #EEE;
 }
 
 ul#topicList h2 {
@@ -306,10 +357,6 @@ ul#topicList p {
 
 }
 
-#topicList div.item {
-  float: right;
-  margin: 0px 0px 1em 1em;
-}
 
 
 
