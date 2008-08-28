@@ -33,6 +33,21 @@ div.item {
 	-moz-border-radius: 3px;
 }
 
+
+#newsletter {
+	margin-top: 4em;  
+}
+
+
+#newsletter h2 {
+	font-size: 1.1em;
+	margin-bottom: 0.5em;
+}
+
+#l403419-403419 {
+  width: 80%;
+}
+
 div.photo img {
 	border-width: 0px;
 	width: 500px;
@@ -257,6 +272,8 @@ form {
   background-color: #d7e9f1;
   padding: 0.5em 1em;
   border: 1px solid #c1d1d8;
+      	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
 }
   
 form p {
