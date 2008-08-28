@@ -23,14 +23,15 @@ div.item {
 }
 
 #topicList div.item {
-	float: left;
 	height: 110px;
 	width: 150px;
 	overflow: hidden;
-	margin: 0px 0px 10px 10px;
+  float: right;
+  margin: 1em 1em 1em 1em;
 	border: 2px solid #EEE;
 	 -webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
+	background-color: #FFF;
 }
 
 
@@ -328,17 +329,20 @@ ul#topicList {
 
 ul#topicList li {
   clear: right;
-  padding: 1em 0px 2em 0px;
-  border-top: 2px solid #EEE;
+  padding: 0px 0px 0px 0px;
+  border-top: 1px solid #DDD;
 }
 
-ul#topicList a {
-  text-decoration: none;
-
+ul#topicList a.topicLink {
+text-decoration: none;
+display: block;
+padding-bottom: 1em;
+min-height: 120px;
+padding: 1em 0px;
 }
 
-ul#topicList a:hover {
-	background-color: #dbe7ef;
+ul#topicList a.topicLink:hover {
+	background-color: #EEE;
 }
 
 ul#topicList h2 {
@@ -353,10 +357,6 @@ ul#topicList p {
 
 }
 
-#topicList div.item {
-  float: right;
-  margin: 0px 0px 1em 1em;
-}
 
 
 
