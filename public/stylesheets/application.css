@@ -22,6 +22,17 @@ div.item {
 	-moz-border-radius: 3px;
 }
 
+#topicList div.item {
+	float: left;
+	height: 110px;
+	width: 150px;
+	overflow: hidden;
+	margin: 0px 0px 10px 10px;
+	border: 2px solid #EEE;
+	 -webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+
 div.photo img {
 	border-width: 0px;
 	width: 500px;
