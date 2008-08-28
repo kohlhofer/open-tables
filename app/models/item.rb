@@ -6,11 +6,19 @@ class Item < ActiveRecord::Base
   named_scope :published, :conditions => {:published => true}, :order => 'updated_at DESC'
   acts_as_taggable
   
-  def next
-    self.class.published.find(:first, :conditions => ['id > ?', self.id], :order => 'id ASC', :limit => 1)
+  def next(topic = nil)
+    if topic
+      topic.items.published.find(:first, :conditions => ['id < ?', self.id], :order => 'id DESC', :limit => 1)
+    else
+      self.class.published.find(:first, :conditions => ['id < ?', self.id], :order => 'id DESC', :limit => 1)
+    end
   end
-  def previous
-    self.class.published.find(:first, :conditions => ['id < ?', self.id], :order => 'id DESC', :limit => 1)
+  def previous(topic = nil)
+    if topic
+      topic.items.published.find(:first, :conditions => ['id > ?', self.id], :order => 'id DESC', :limit => 1)
+    else
+      self.class.published.find(:first, :conditions => ['id > ?', self.id], :order => 'id DESC', :limit => 1)
+    end
   end
 
   def preview_url

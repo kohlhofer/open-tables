@@ -4,6 +4,11 @@ xml.tag! "graph" do
       xml.tag! "tag", {:id => tag.id, :tag => tag}
     end
   end
+  xml.tag! "topics" do
+    Topic.active.each do |topic|
+      xml.tag! "topic", {:id => topic.id, :title => topic.title}
+    end
+  end
   xml.tag! "items" do
     for item in @items
       xml.item do

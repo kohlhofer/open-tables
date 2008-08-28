@@ -20,8 +20,8 @@
 
 <div class="second">
 	<div class="prevNext">
-		<%= link_to 'Next item', item_url(@item.next), :class => "next" %>
-		<%= link_to 'Previous item', item_url(@item.previous), :class => "previous" %>
+		<%= link_to 'Next item', item_url(@item.next), :class => "next" if @item.next %>
+		<%= link_to 'Previous item', item_url(@item.previous), :class => "previous" if @item.previous %>
 		<div class="clearThis"> </div>
 	</div>
 	
