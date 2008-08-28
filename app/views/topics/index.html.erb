@@ -1,12 +1,7 @@
 <div class="second">
 	<div class="info">
-		<h2>About Open Tables</h2>
-		<p>OT is a new way to engage with information on the web, in an enjoyable and collaborative way.</p>
-		<p>To get the full experience, please participate physically live at the <a href="http://www.tentlondon.co.uk/">Tent</a> design expo at the Truman Brewery from 18th - 21st Sept. For further information and to find out when and where future installations will be, please check out our <a href="http://blog.opntables.org">blog</a>.</p>
-		<p><%= link_to 'Learn more', about_url %></p>
+	  <%= Goldberg::ContentPage.find_by_name('info').content_html rescue nil %>
 	</div>
-	
-	
 
 	
 	<div id="subscribe">
