@@ -23,7 +23,8 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml do # index.xml.erb
+      format.rss # index.rss.builder
+      format.xml do # index.xml.builder
         @tags = @items.collect{|item| item.tags }.flatten.uniq 
         @tags.concat(@topic.tags).uniq if @topic
       end
