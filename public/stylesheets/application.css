@@ -611,3 +611,6 @@ a.previous:hover, a.next:hover {
 }
 
 
+#disqus_thread {
+  margin-top: 3em;
+}
