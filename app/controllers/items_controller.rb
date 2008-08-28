@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
     per_page = 20
     per_page = 15 if request.format == :html
     if params[:tags]
-#      params[:tags] = params[:tags][0].split(',') unless params[:tags].is_a?(Array)
+      params[:tags] = params[:tags].split(',') unless params[:tags].is_a?(Array)
       if @topic
         @items = @topic.items.published.find_tagged_with(params[:tags].join(','), :match_all => true).paginate(:per_page => per_page, :page => params[:page])
       else
