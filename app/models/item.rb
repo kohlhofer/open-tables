@@ -7,10 +7,10 @@ class Item < ActiveRecord::Base
   acts_as_taggable
   
   def next
-    self.class.published.find(:first, :conditions => ['id < ?', self.id], :order => 'id ASC', :limit => 1)
+    self.class.published.find(:first, :conditions => ['id < ? AND topic_id = ?', self.id, self.topic_id], :order => 'id ASC', :limit => 1)
   end
   def previous
-    self.class.published.find(:first, :conditions => ['id > ?', self.id], :order => 'id DESC', :limit => 1)
+    self.class.published.find(:first, :conditions => ['id > ? AND topic_id = ?', self.id, self.topic_id], :order => 'id DESC', :limit => 1)
   end
 
   def preview_url
