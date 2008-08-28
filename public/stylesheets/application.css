@@ -40,8 +40,23 @@ div.item {
 
 
 #newsletter h2 {
-	font-size: 1.1em;
+	font-size: 1em;
 	margin-bottom: 0.5em;
+}
+
+#subscribe {
+	margin-top: 2em;  
+}
+
+
+#subscribe h2 {
+	font-size: 1em;
+	margin-bottom: 0.5em;
+}
+
+.rss {
+    background: transparent url(/images/feed.gif) no-repeat left top;
+    padding-left: 20px; 
 }
 
 #l403419-403419 {
