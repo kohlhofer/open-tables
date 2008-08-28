@@ -6,7 +6,7 @@ namespace :maxmsp do
     
     xml_content = XmlSimple.xml_in(args[:file])
     xml_content['tagEdge'].each do |item|
-      Item.update(item['item_id'], {:tag_list => item['tag_list']})
+      Item.update(item['item_id'], {:tag_list => item['tag_list']}) rescue nil
     end
   end
 end
