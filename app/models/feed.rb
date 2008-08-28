@@ -10,6 +10,8 @@ class Feed < ActiveRecord::Base
   belongs_to :user
   acts_as_taggable
   
+  named_scope :ordered, :order => 'topic_id', :include => :topic
+  
   def refresh
     feed = FeedTools::Feed.open(self.url)
     feed.items.reverse.each do |item|
