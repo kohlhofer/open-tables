@@ -1,6 +1,6 @@
 xml.tag! "graph" do
   xml.tag! "tags" do
-    @item.tags.each do |tag|
+    (@item.tags.clone.concat(@topic.nil? ? [] : @topic.tags)).each do |tag|
       xml.tag! "tag", {:id => tag.id, :tag => tag}
     end
   end
