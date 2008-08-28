@@ -45,6 +45,16 @@ div.item {
 	margin-bottom: 0.5em;
 }
 
+
+#recent_comments {
+  	margin-top: 2em;  
+}
+
+#recent_comments h2 {
+	font-size: 1em;
+	margin-bottom: 0.5em;
+}
+
 #subscribe {
 	margin-top: 3em;  
 }
@@ -614,3 +624,36 @@ a.previous:hover, a.next:hover {
 #disqus_thread {
   margin-top: 3em;
 }
+
+ul.dsq-widget-list {
+	margin: 0px;
+padding: 0px;
+  
+}
+
+#recent_comments span.dsq-widget-comment {
+  font-size: 0.8em;
+}
+
+#recent_comments img.dsq-widget-avatar {
+  margin: 0px 0.3em 0.3em 0px;
+}
+
+#recent_comments p.dsq-widget-meta a {
+  color: #666;
+}
+
+li.dsq-widget-item {
+  margin-bottom: 1.5em;
+}
+
+#recent_comments a.dsq-widget-user.dsq-unregistered-user, #recent_comments a.dsq-widget-user {
+  font-size: 0.8em;
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+ {
+  
+}
+
