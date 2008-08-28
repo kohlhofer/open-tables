@@ -1,0 +1,12 @@
+require 'config/environment'
+require 'xmlsimple'
+namespace :maxmsp do
+  desc "Pulls data from maxmsp output into database"
+  task :pull => :environment, :needs => [:file] do |task, args|
+    
+    xml_content = XmlSimple.xml_in(args[:file])
+    xml_content['tagEdge'].each do |item|
+      Item.update(item['item_id'], {:tag_list => item['tag_list']})
+    end
+  end
+end
