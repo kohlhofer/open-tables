@@ -22,7 +22,7 @@ xml.tag! "graph" do
   end
   xml.tag! "tagEdges" do
     @item.tags.each do |tag|
-      xml.tag! "tagEdge", {:item_id => @item.id, :tag_id => tag.id }
+      xml.tag! "tagEdge", {:item_id => @item.id, :tag_id => tag.id, :topic_tag => (@topic.nil? ? false : @topic.tags.include?(tag))}
     end
   end
 end
