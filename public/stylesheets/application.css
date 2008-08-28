@@ -35,7 +35,7 @@ div.item {
 
 
 #newsletter {
-	margin-top: 4em;  
+	margin-top: 2em;  
 }
 
 
@@ -45,7 +45,7 @@ div.item {
 }
 
 #subscribe {
-	margin-top: 2em;  
+	margin-top: 3em;  
 }
 
 
@@ -164,6 +164,10 @@ p.itemTopic a {
   padding: 0px;
   float: right;
   margin-left: 2%;
+}
+
+.info p {
+  line-height: 1.4em;
 }
 
 .clearThis {
