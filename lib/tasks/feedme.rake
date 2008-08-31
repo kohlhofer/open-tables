@@ -2,7 +2,7 @@ require 'config/environment'
 
 namespace :feedme do
   desc "Pull the latest feeds and populate the database."
-  task :pull_feeds do 
+  task :pull_feeds => :environment do 
     feeds = Feed.find(:all)
     
     feeds.each do |feed|
