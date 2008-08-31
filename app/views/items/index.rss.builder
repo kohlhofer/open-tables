@@ -8,7 +8,9 @@ xml.rss(:version=>"2.0") do
         xml.tag! "type", item.type
         xml.title(item.title)
         # TODO xml.cdata!
-        xml.tag! "body", item.body
+        xml.tag! "body" do
+          xml.cdata! ( render(:file => "items/_" + item.type.to_s.downcase + ".html.erb", :locals => {:item => item }))
+        end
         xml.tag! "source", item.source
         xml.tag! "tags" do
           for tag in item.tags
