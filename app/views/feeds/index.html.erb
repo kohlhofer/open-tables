@@ -2,15 +2,21 @@
 
 <table>
   <tr>
+    <th>Topic</th>
     <th>Title</th>
     <th>Url</th>
+    <th>Active</th>
+    <th colspan="3">Actions</th>
   </tr>
 
-<% for feed in @feeds %>
+<% 
+time_now = Time.now
+for feed in @feeds %>
   <tr>
     <td><%= h feed.topic.title if feed.topic %></td>
     <td><%= h feed.title %></td>
     <td><%= h feed.url %></td>
+    <td><%= feed.expire_date.nil? ? true : feed.expire_date < time_now %></td>
     <td><%= link_to 'Show', feed %></td>
     <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
     <td><%= link_to 'Destroy', feed, :confirm => 'Are you sure?', :method => :delete %></td>
