@@ -1,0 +1,26 @@
+<% @page_title = 'New feed' %>
+
+<%= error_messages_for :feed %>
+
+<% form_for(@feed, :url => {:action => :create}) do |f| %>
+  
+
+  <p><label>Tags: <br />
+    <%= f.text_field :tag_list %>
+  </label></p>
+
+  <p><label>Type: <br />
+    <%= f.select :source, [['flickr', 'flickr']] %>
+  </label></p>
+
+  <p><label>Valid for: <br />
+    <%= f.select :expire_date, [['5 minutes', 5.minutes.from_now], ['30 minutes', 30.minutes.from_now], ['60 minutes', 60.minutes.from_now]] %>
+  </label></p>
+
+
+
+  <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', feeds_path %>

@@ -19,7 +19,22 @@ class Feed < ActiveRecord::Base
       send('create_%s' % self.factory, item)
     end
   end
-  
+
+  def source
+    return if url.nil?
+    return 'flickr' if url.match(/flickr.com/)
+#    return 'youtube' if url.match(/youtube.com/)
+  end
+  def source=(src)
+    return unless url.blank?
+    return if tag_list.blank?
+    if src == 'flickr'
+      self.url = 'http://api.flickr.com/services/feeds/photos_public.gne?tags=%s&format=rss_200' % tag_list
+      self.title = 'flickr: %s' % tag_list
+      self.alternative_url = 'http://www.flickr.com/search/?q=%s&m=tags' % tag_list
+    end
+  end
+
   def create_article(item)
     return if Article.find_by_source(item.link)
     content = ""

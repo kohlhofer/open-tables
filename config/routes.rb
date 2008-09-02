@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :feeds, :collection => {:ping => :any}
+  map.resources :feeds, :collection => {:ping => :any, :simple => :get, :create_simple => :post}
 
   map.resources :topics do |topic|
     topic.resources :items, :collection => {:tag_cloud => :get, :tags => :get },
