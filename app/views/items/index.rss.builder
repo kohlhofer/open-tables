@@ -8,12 +8,12 @@ xml.rss(:version=>"2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/", "xmln
     for item in @items
       xml.item do
         xml.title(item.title)
-        xml.tag! "content:encoded" do
+        xml.description do
           xml.cdata! ( render(:file => "items/_" + item.type.to_s.downcase + ".html.erb", :locals => {:item => item }))
         end
         xml.tag! "source", item.source
         for tag in item.tags
-          xml.tag! "category", tag
+          xml.tag! "category", :term => tag
         end
         xml.pubDate(item.updated_at.rfc2822)
         xml.link(item_url(item))
