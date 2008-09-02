@@ -5,7 +5,7 @@ namespace :whiteboard do
     
     Dir.open(args[:dir]) do |dir|
       dir.each do |file|
-        filename = dir + file.downcase
+        filename = args[:dir] + file.downcase
         next if file.match /^\./
         topic_id = file.downcase.match(/^t(\d+)_/)[1] if file.downcase.match(/^t(\d+)_/)
         title = file.match(/^(.+)\./).nil? ? 'whiteboard file' : file.match(/^(.+)\./)[1]
