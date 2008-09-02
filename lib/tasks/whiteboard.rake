@@ -5,7 +5,7 @@ namespace :whiteboard do
     
     Dir.open(args[:dir]) do |dir|
       dir.each do |file|
-        filename = args[:dir] + file.downcase
+        filename = args[:dir] + file
         next if file.match /^\./
         topic_id = file.downcase.match(/^t(\d+)_/)[1] if file.downcase.match(/^t(\d+)_/)
         title = file.match(/^(.+)\./).nil? ? 'whiteboard file' : file.match(/^(.+)\./)[1]
@@ -15,6 +15,7 @@ namespace :whiteboard do
         elsif file.downcase.match /txt$/
           f = File.new(filename, 'r')
           Article.create!(:source => '/txt/' + file.downcase, :body => f.read, :topic_id => topic_id, :title => title)
+          f.close
           File.rename(filename, RAILS_ROOT + '/public/txt/' + file.downcase)
         end
       end
