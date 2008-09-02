@@ -46,6 +46,10 @@ class FeedsController < ApplicationController
       format.xml  { render :xml => @feed }
     end
   end
+  
+  def simple
+    @feed = Feed.new
+  end
 
   # GET /feeds/1/edit
   def edit
