@@ -11,8 +11,8 @@ namespace :whiteboard do
         topic_id = file.downcase.match(/^t(\d+)_/)[1] if file.downcase.match(/^t(\d+)_/)
         title = file.match(/^(.+)\./).nil? ? 'whiteboard file' : file.match(/^(.+)\./)[1]
         if file.downcase.match /(png|jpg|gif)$/
-          File.rename(filename, RAILS_ROOT + '/public/images/' + file.downcase)
           Photo.create!(:body => '/images/' + file.downcase, :topic_ids => topic_id, :title => title)
+          File.rename(filename, RAILS_ROOT + '/public/images/' + file.downcase)
         elsif file.downcase.match /txt$/
           f = File.new(filename, 'r')
           Article.create!(:source => '/txt/' + file.downcase, :body => f.read, :topic_ids => topic_id, :title => title)

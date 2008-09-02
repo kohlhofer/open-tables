@@ -26,7 +26,7 @@ class Item < ActiveRecord::Base
   end
 
   def source_short
-    self.source.gsub(/https?:\/\//, '').gsub(/\/$/, '')
+    self.source.gsub(/https?:\/\//, '').gsub(/\/$/, '') rescue nil
   end
 
   def toggle_relevant(tag)
