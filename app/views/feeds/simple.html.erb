@@ -13,11 +13,14 @@
     <%= f.select :source, [['flickr', 'flickr']] %>
   </label></p>
 
-  <p><label>Valid for: <br />
-    <%= f.select :expire_date, [['5 minutes', 5.minutes.from_now], ['30 minutes', 30.minutes.from_now], ['60 minutes', 60.minutes.from_now]] %>
+
+  <p><label>Topic: <br />
+    <%= f.select :topic_id, Topic.find(:all, :select => "id, title").collect{|t| [t.title, t.id]}, :include_blank => true %>
   </label></p>
 
-
+  <p><label>Valid for: <br />
+    <%= f.select :expire_date, [['5 minutes', 5.minutes.from_now] %>
+  </label></p>
 
   <%= f.submit "Create" %>
   </p>
