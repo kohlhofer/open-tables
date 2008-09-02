@@ -9,8 +9,8 @@ ActionController::Routing::Routes.draw do |map|
     :member => {:add_tag => :put, :delete_tag => :delete, :toggle_relevant => :put }
   map.item_tags '/tag/*tags', :controller => "items", :action => "index"  
   map.topic_tags '/topics/:topic_id/tag/*tags', :controller => "items", :action => "index"
-map.formatted_item_tags '/xml/tag/*tags', :controller => "items", :action => "index", :format => 'xml'
-map.formatted_topic_tags '/xml/topics/:topic_id/tag/*tags', :controller => "items", :action => "index", :format => 'xml'
+map.formatted_item_tags '/:format/tag/*tags', :controller => "items", :action => "index"
+map.formatted_topic_tags '/:format/topics/:topic_id/tag/*tags', :controller => "items", :action => "index"
   map.tags '/tags', :controller => "items", :action => "tag_cloud"
 
 
