@@ -3,5 +3,5 @@
   <%= item.body %>
 	<%= link_to h(item.title), item.source, :class => "source" unless item.source.blank? %>
 
-  <%= link_to 'from %s' % item.source_short, item.source, :class => 'source' unless item.blank? %>
+  <%= link_to_unless item.source.nil? 'from %s' % item.source_short, item.source, :class => 'source' unless item.blank? %>
 </div>

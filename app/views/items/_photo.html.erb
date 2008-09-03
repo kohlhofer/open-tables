@@ -1,5 +1,5 @@
 <div class="photo">
   <%= image_tag item.body, :alt => item.title %>
 
-  <%= link_to 'from %s' % item.source_short, item.source, :class => 'source' %>
+  <%= link_to_unless item.source.nil? 'from %s' % item.source_short, item.source, :class => 'source' %>
 </div>
