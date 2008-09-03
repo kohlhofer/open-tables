@@ -63,6 +63,7 @@ class FeedsController < ApplicationController
 
     respond_to do |format|
       if @feed.save
+        @feed.refresh
         flash[:notice] = 'RssFeed was successfully created.'
         format.html { redirect_to(@feed) }
         format.xml  { render :xml => @feed, :status => :created, :location => @feed }
