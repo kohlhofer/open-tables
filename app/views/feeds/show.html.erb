@@ -5,10 +5,12 @@
   <li>Alternative URL: <%= link_to @feed.alternative_url, @feed.alternative_url %></li>
 <% unless @feed.user.nil? %>
   <li>Added by <%= link_to feed.user.name, user_show_url(feed.user) %></li>
+  <li>In topic <%= link_to feed.topic.title, feed.topic %></li>
 <% end %>
 </ul>
 
 <% @feed.items.each do |item| %>
+  <h3><%= link_to item.title, item_url(item) %></h3>
   <%= render :partial => '/items/%s' % item.type.to_s.downcase, :locals => {:item => item} %>
 <% end %>
 

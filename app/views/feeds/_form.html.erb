@@ -19,6 +19,6 @@
 </p>
 
 <p><label>Topic: <br />
-  <%= f.select :topic_id, Topic.find(:all, :select => "id, title").collect{|t| [t.title, t.id]}, :include_blank => true %>
+  <%= f.select :topic_id, Topic.active.collect{|t| [t.title, t.id]}, :include_blank => true %>
 </label></p>
 

@@ -1,5 +1,10 @@
 class FeedsController < ApplicationController
   
+  rescue_from ActiveRecord::RecordNotFound do
+    flash[:error] = "No such item found"
+    redirect_to '/' and return
+  end
+  
   def ping
     feed = Feed.find_by_url(params[:url])
     if feed
