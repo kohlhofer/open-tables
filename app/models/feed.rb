@@ -12,7 +12,7 @@ class Feed < ActiveRecord::Base
   acts_as_taggable
   
   named_scope :ordered, :order => 'feeds.topic_id, feeds.expire_date DESC', :include => :topic
-  named_scope :active, :conditions => ['feeds.expire_date < NOW()']
+  named_scope :active, :conditions => ['feeds.expire_date > NOW() OR feeds.expire_date IS NULL']
   
   def refresh
     feed = FeedTools::Feed.open(self.url)
