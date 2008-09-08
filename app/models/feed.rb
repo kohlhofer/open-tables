@@ -7,6 +7,7 @@ class Feed < ActiveRecord::Base
   
   validates_presence_of :title
   validates_presence_of :url
+  validates_inclusion_of :factory, :in => FEED_TYPES
   belongs_to :user
   acts_as_taggable
   
