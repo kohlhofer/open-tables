@@ -32,7 +32,7 @@ class Feed < ActiveRecord::Base
       self.url = 'http://api.flickr.com/services/feeds/photos_public.gne?tags=%s&format=rss_200' % tag_list
       self.title = 'flickr: %s' % tag_list
       self.alternative_url = 'http://www.flickr.com/search/?q=%s&m=tags' % tag_list
-      self.factory = 'photo'
+      self.factory = 'flickr'
     end
   end
 
