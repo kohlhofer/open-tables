@@ -20,7 +20,7 @@
 	<%= link_to "Rejected", { :controller => :items, :action => :index, :tags => tag_list_for_url("rejected"), :topic_id => params[:topic_id] }, :class => tag_list.include?('rejected') ? 'current' : '' %>
 	<%= link_to 'All items', topic_items_url(@topic), :class =>  (tag_list.include?('relevant') or tag_list.include?('rejected')) ? '' : 'current' %>
 	<% if @topic %>
-	<%= link_to 'see differently', 'http://www.wag-architecture.co.uk/opentables/walls/swf/opentables_topic%i.htm' % @topic.id %>
+	<%= link_to 'See differently', 'http://www.wag-architecture.co.uk/opentables/walls/swf/opentables_topic%i.htm' % @topic.id %>
 	<% end %>
 </p>
 
