@@ -12,7 +12,7 @@ config.action_controller.consider_all_requests_local = false
 config.action_controller.perform_caching             = true
 
 # Use a different cache store in production
-config.cache_store = :timed_cache_store, :file_store => 'tmp/cache/'
+config.cache_store = :timed_cache_store, :file_store, 'tmp/cache/'
 
 # Enable serving of images, stylesheets, and javascripts from an asset server
 # config.action_controller.asset_host                  = "http://assets.example.com"
