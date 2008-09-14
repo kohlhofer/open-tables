@@ -4,7 +4,7 @@ class TopicsController < ApplicationController
   include TagsHelper
   helper :tags
   
-  caches_action [:index], :until => 5.minutes_from_now
+  caches_action [:index], :until => Time.now + 5.minutes
 
   def index
     @topics = Topic.active.paginate(:per_page => 20, :page => params[:page])
