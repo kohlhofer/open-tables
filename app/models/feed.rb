@@ -19,6 +19,7 @@ class Feed < ActiveRecord::Base
     feed.items.reverse.each do |item|
       send('create_%s' % self.factory, item)
     end
+    feed.close
   end
 
   def source
