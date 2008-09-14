@@ -4,6 +4,8 @@ class ItemsController < ApplicationController
   
   include TagsHelper
   helper :tags
+  
+  caches_action [:index, :show], :until => 5.minutes_from_now
 
   def index
     per_page = 20
