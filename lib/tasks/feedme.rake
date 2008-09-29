@@ -6,7 +6,7 @@ namespace :feedme do
     
     Feed.active.each do |feed|
       begin
-        feed.refresh
+        feed.refresh rescue nil
         feed = nil
       rescue RuntimeError => e
         # Silent but deadly...well, not so much.
